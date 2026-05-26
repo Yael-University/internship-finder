@@ -162,7 +162,7 @@ The scoring pipeline is also available as a deployed HTTP API.
 }
 ```
 
-**`POST /score`** — score a job description against a resume
+**`POST /score`** — score a job description against a resume; automatically stores the result in ChromaDB
 
 ```bash
 curl -X POST https://internship-finder-h6sq.onrender.com/score \
@@ -186,7 +186,50 @@ curl -X POST https://internship-finder-h6sq.onrender.com/score \
   "matched_keywords": ["python", "sql", "etl", "airflow"],
   "missing_keywords": ["snowflake", "dbt"],
   "critical_missing": ["snowflake"],
-  "ats_tip": "Add \"snowflake\" to your resume — likely ATS filter keyword."
+  "ats_tip": "Add \"snowflake\" to your resume — likely ATS filter keyword.",
+  "stored": true
+}
+```
+
+**`POST /search`** — semantic search over all previously scored jobs
+
+```bash
+curl -X POST https://internship-finder-h6sq.onrender.com/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "remote data engineering Python Airflow", "top_k": 5}'
+```
+
+```json
+{
+  "results": [
+    {
+      "role": "Data Engineer Intern",
+      "company": "Rocket Lawyer",
+      "location": "Remote",
+      "fit_score": 9,
+      "similarity": 0.91,
+      "excerpt": "Role: Data Engineer Intern\nCompany: Rocket Lawyer..."
+    }
+  ],
+  "total_stored": 12
+}
+```
+
+**`POST /ask`** — RAG: retrieve relevant jobs, synthesize an answer via Groq
+
+```bash
+curl -X POST https://internship-finder-h6sq.onrender.com/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Which stored jobs are fully remote and mention Airflow?", "top_k": 5}'
+```
+
+```json
+{
+  "answer": "Based on the stored listings, two remote positions mention Airflow: Data Engineer Intern at Rocket Lawyer and Data Engineering Intern at Teacher Retirement System of Texas...",
+  "sources": [
+    {"role": "Data Engineer Intern", "company": "Rocket Lawyer", "fit_score": 9, "similarity": 0.91}
+  ],
+  "total_stored": 12
 }
 ```
 
