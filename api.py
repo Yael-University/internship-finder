@@ -6,11 +6,15 @@ Endpoints:
   POST /score   — score a job description against a resume; stores result in ChromaDB
   POST /search  — semantic search over all stored jobs
   POST /ask     — RAG: retrieve relevant jobs, synthesize answer via Groq
+  GET  /eval    — run offline eval against data_folder/eval_labels.json
 """
 from __future__ import annotations
 
+import asyncio
+import json
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, Header, HTTPException
@@ -27,6 +31,10 @@ _ats_scorer: Optional[ATSScorer] = None
 _job_store:  Optional[JobStore]   = None
 
 
+def _init_ats_scorer() -> ATSScorer:
+    return ATSScorer(resume_text="python sql machine learning data engineering")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global _fit_scorer, _ats_scorer, _job_store
@@ -35,8 +43,16 @@ async def lifespan(app: FastAPI):
     if groq_key:
         _fit_scorer = JobFitScorer(groq_api_key=groq_key)
 
-    _ats_scorer = ATSScorer(resume_text="python sql machine learning data engineering")
-    _job_store  = JobStore()
+    _job_store = JobStore()
+
+    # Load sentence-transformers in a thread so the event loop stays free
+    # and Render's health-check can reach /health immediately on startup.
+    async def _bg_load():
+        global _ats_scorer
+        loop = asyncio.get_event_loop()
+        _ats_scorer = await loop.run_in_executor(None, _init_ats_scorer)
+
+    asyncio.create_task(_bg_load())
 
     yield
 
@@ -119,6 +135,11 @@ class AskResponse(BaseModel):
     answer: str
     sources: list[dict]
     total_stored: int
+
+
+class EvalResponse(BaseModel):
+    fit_scores: dict
+    retrieval: dict
 
 
 # ── Routes ────────────────────────────────────────────────────────────────────
