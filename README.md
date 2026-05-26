@@ -165,7 +165,7 @@ The scoring pipeline is also available as a deployed HTTP API.
 **`POST /score`** — score a job description against a resume
 
 ```bash
-curl -X POST https://your-deployment.onrender.com/score \
+curl -X POST https://internship-finder-h6sq.onrender.com/score \
   -H "Content-Type: application/json" \
   -d '{
     "resume": "Python, SQL, Apache Airflow, dbt...",
