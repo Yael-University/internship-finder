@@ -12,6 +12,7 @@ from contextlib import asynccontextmanager
 from typing import Optional
 
 from fastapi import FastAPI, Header, HTTPException
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
 from src.ats_scorer import ATSScorer
@@ -80,6 +81,11 @@ class ScoreResponse(BaseModel):
 
 
 # ── Routes ────────────────────────────────────────────────────────────────────
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
+
 
 @app.get("/health")
 def health():
