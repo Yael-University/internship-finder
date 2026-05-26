@@ -226,32 +226,41 @@ class ATSScorer:
         self._sem_model    = None
         self._ml_ready     = False
 
-        if _ML_AVAILABLE and resume_text:
+        if resume_text:
             self._load_models()
 
     def _load_models(self) -> None:
-        try:
-            logger.info("[ATS] Loading jobbert skill extractor…")
-            self._skill_pipe = hf_pipeline(
-                "token-classification",
-                model=_SKILL_MODEL_ID,
-                aggregation_strategy="simple",
-            )
-            logger.info("[ATS] Loading sentence-transformers semantic model…")
-            self._sem_model = SentenceTransformer(_SEMANTIC_MODEL_ID)
+        # jobbert is optional — load it if available, fall back to static extraction if not
+        if _HF_AVAILABLE:
+            try:
+                logger.info("[ATS] Loading jobbert skill extractor…")
+                self._skill_pipe = hf_pipeline(
+                    "token-classification",
+                    model=_SKILL_MODEL_ID,
+                    aggregation_strategy="simple",
+                )
+                logger.info("[ATS] jobbert loaded")
+            except Exception as e:
+                logger.warning(f"[ATS] jobbert unavailable ({e}) — keyword layer uses static extraction")
+                self._skill_pipe = None
 
-            logger.info("[ATS] Pre-computing resume embedding…")
-            self._resume_embed = self._sem_model.encode(
-                self._resume_text, convert_to_tensor=True
-            )
-            self._ml_ready = True
-            logger.info("[ATS] ML models ready (jobbert + sentence-transformers)")
-        except Exception as e:
-            logger.warning(
-                f"[ATS] ML models failed to load ({e}) — "
-                "falling back to static keyword matching"
-            )
-            self._ml_ready = False
+        # sentence-transformers is loaded independently so jobbert failure doesn't block it
+        if _ST_AVAILABLE:
+            try:
+                logger.info("[ATS] Loading sentence-transformers semantic model…")
+                self._sem_model = SentenceTransformer(_SEMANTIC_MODEL_ID)
+                logger.info("[ATS] Pre-computing resume embedding…")
+                self._resume_embed = self._sem_model.encode(
+                    self._resume_text, convert_to_tensor=True
+                )
+                self._ml_ready = True
+                logger.info("[ATS] Semantic model ready")
+            except Exception as e:
+                logger.warning(
+                    f"[ATS] sentence-transformers failed to load ({e}) — "
+                    "falling back to static keyword matching only"
+                )
+                self._ml_ready = False
 
     # ── jobbert skill extraction from JD ──────────────────────────────────────
 
