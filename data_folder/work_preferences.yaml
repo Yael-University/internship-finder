@@ -1,0 +1,68 @@
+remote: true
+hybrid: true
+onsite: true
+
+experience_level:
+  internship: true
+  entry: true
+  associate: false
+  mid_senior_level: false
+  director: false
+  executive: false
+
+job_types:
+  full_time: true
+  contract: false
+  part_time: false
+  temporary: true
+  internship: true
+  other: false
+  volunteer: false
+
+date:
+  all_time: false
+  month: true
+  week: false
+  24_hours: false
+
+positions:
+  # Priority 1 — Data Engineering
+  - Data Engineer Intern
+  - Data Engineering Co-op
+  # Priority 2 — Data Science
+  - Data Scientist Intern
+  - Data Science Co-op
+  # Priority 3 — Machine Learning Engineering
+  - Machine Learning Engineer Intern
+  - ML Engineer Intern
+  # Priority 4 — Software Engineering
+  - Software Engineer Intern
+  - Software Engineering Co-op
+
+locations:
+  - United States
+  - Remote
+
+apply_once_at_company: false
+
+# Cap on how many jobs get scored by Groq (0 = no cap).
+# Free tier ≈ 30 RPM / 6000 TPM — each call ≈ 2000-3000 tokens (~3 calls/min).
+# 50 jobs ≈ 17 min of scoring. Raise or remove the cap if you have a paid key.
+max_jobs_to_score: 50
+
+distance: 100
+
+company_blacklist:
+  - wayfair
+  - Crossover
+
+title_blacklist:
+  - Senior
+  - Staff
+  - Principal
+  - Lead
+  - Manager
+  - Director
+
+location_blacklist:
+  - Brazil

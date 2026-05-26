@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: internship-fit-scorer
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false       # set manually in Render dashboard
+      - key: API_KEY
+        sync: false       # optional — leave blank to disable auth

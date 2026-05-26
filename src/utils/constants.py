@@ -1,0 +1,16 @@
+DATE_ALL_TIME = "all_time"
+DATE_MONTH = "month"
+DATE_WEEK = "week"
+DATE_24_HOURS = "24_hours"
+
+SECRETS_YAML = "secrets.yaml"
+WORK_PREFERENCES_YAML = "work_preferences.yaml"
+PLAIN_TEXT_RESUME_YAML = "plain_text_resume.yaml"
+
+DEBUG = "DEBUG"
+INFO = "INFO"
+WARNING = "WARNING"
+ERROR = "ERROR"
+CRITICAL = "CRITICAL"
+
+MINIMUM_LOG_LEVEL = "MINIMUM_LOG_LEVEL"
