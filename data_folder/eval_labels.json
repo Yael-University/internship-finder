@@ -1,0 +1,1174 @@
+{
+  "version": 1,
+  "fit_score_threshold": 7,
+  "instructions": "Set would_apply to true or false for each job. null means not yet labeled. Focus on jobs with fit_score >= 7 first \u2014 those are the 49 jobs the system flagged as matches.",
+  "jobs": [
+    {
+      "id": "3f2c6b6b07f7",
+      "role": "Data Engineer (Remote, US)",
+      "company": "Sayari",
+      "location": "Washington, DC (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4419514306/",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer role at Sayari, as their experience in building and orchestrating data pipelines using Apache Airflow and Google Cloud Storage aligns with the job requirements. The role is also the candidate's top priority, and the remote work arrangement meets their location preference for fall and spring internships/co-ops. The candidate's skills in Python, SQL, and ETL workflows, as well as their experience with large-scale data infrastructure, further support their fit for the position.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "3bfcea47edd7",
+      "role": "Data Engineer Intern",
+      "company": "TikTok",
+      "location": "San Jose, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=bb549c71-7b62-436b-9a16-21d9da8c69dc",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority role, and they possess relevant skills such as experience with data pipelines, SQL, and Python. The summer internship season also aligns with their location preference, allowing for an onsite internship in San Jose, CA. The candidate's background in data engineering and strong problem-solving skills make them a great fit for the role, with only minor potential gaps in specific data warehousing knowledge.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "d31bb8ed1426",
+      "role": "Data Engineer Intern",
+      "company": "Netflix",
+      "location": "Los Angeles, CA, USA + 1 more",
+      "link": "https://simplify.jobs/jobs?jobId=58faa154-38a2-4ac3-95e8-5dcb767761f1",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role at Netflix, which aligns with their top-priority role. They possess relevant skills such as programming proficiency in Python, strong foundational knowledge of SQL, and experience with data pipelines, as evident from their experience as a Data Engineering Intern at Cadent. The summer internship season also aligns with the candidate's location preference, allowing for an onsite or hybrid setup.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "25dfb8991bed",
+      "role": "Data Engineer Intern",
+      "company": "Intelcom | Dragonfly",
+      "location": "Montreal, QC, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=60956514-0af3-42e3-97dc-b4e69d693b20",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority target role, and they possess relevant skills such as experience with Apache Airflow, Python, SQL, and ETL pipelines. The summer internship season also aligns with their location preference, allowing for an onsite internship in Montreal. The candidate's master's program in Data Science and their experience in data engineering make them a highly suitable fit for this role.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "91a012cd7e1a",
+      "role": "Data Engineer Intern",
+      "company": "Super",
+      "location": "Toronto, ON, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=b79f161e-89b5-4a62-bdab-e10e9118ca07",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority role, and they possess relevant skills such as building scalable data pipelines, working with APIs and databases, and experience with data engineering tools like Apache Airflow and Google Cloud Storage. The remote work option for fall internships also aligns with the candidate's location preferences. The candidate's experience and skills, combined with the role's focus on data engineering, make them a highly suitable fit for this position.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "1e88093472f7",
+      "role": "Data Engineer Intern - E-commerce",
+      "company": "TikTok",
+      "location": "Seattle, WA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=c3bf7441-29b9-4a6d-a6bf-4282eb67e697",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority role, and they have relevant experience in data engineering, ETL, and big data technologies. The summer internship season allows for onsite work, which meets the job's in-person requirement in Seattle, WA.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "010a2eb567f7",
+      "role": "Data Engineering Intern",
+      "company": "Wrench.AI",
+      "location": "Remote",
+      "link": "https://app.joinhandshake.com/jobs/11011213",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineering Intern role at Wrench.ai, with relevant experience in data engineering, data pipelines, and cloud storage, aligning with their top-priority role. The remote work arrangement also fits the candidate's location preference for fall and spring internships/co-ops. The candidate's skills, such as Apache Airflow, Python, and SQL, demonstrate a strong technical foundation for the position.",
+      "source": "handshake",
+      "would_apply": true
+    },
+    {
+      "id": "2daa1b105a45",
+      "role": "Data Engineering Intern (AI & Automation)",
+      "company": "Rocket Lawyer",
+      "location": "Colorado, United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4408070259/",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineering Intern role, which aligns with their top-priority role preference, and they possess relevant skills such as experience with Apache Airflow, Python, and SQL, as well as ETL pipeline development. The job's remote work arrangement also meets the candidate's location preference for non-summer terms, and the summer internship season allows for remote work, making it a suitable fit. The candidate's background in data engineering and experience with similar technologies make them a highly suitable candidate for this role.",
+      "source": "linkedin",
+      "would_apply": true
+    },
+    {
+      "id": "598bca823f89",
+      "role": "Engineering Intern - Data Engineering",
+      "company": "EnergyHub",
+      "location": "Brooklyn, NY, USA",
+      "link": "https://simplify.jobs/jobs?jobId=eb78c1c4-0c16-4718-8353-2d7067965c8d",
+      "fit_score": 9,
+      "reasoning": "The candidate is a strong match for the Data Engineering Intern role, with relevant experience in data engineering, proficiency in SQL and Python, and familiarity with tools like Apache Airflow, which aligns with the job requirements. The candidate's location preference for summer internships allows for onsite work in Brooklyn, NY, and their academic background in Data Science at Northeastern University meets the enrollment requirements.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "643f275071e4",
+      "role": "AI/ML Data Engineering Intern (Summer 2026)",
+      "company": "Teacher Retirement System of Texas",
+      "location": "Austin, TX",
+      "link": "https://app.joinhandshake.com/jobs/11041748",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the AI/ML Data Engineering Intern role, which aligns with their top-priority role of Data Engineering, and they possess relevant skills such as data pipelines, Apache Airflow, and Google Cloud Storage. The job's focus on data engineering and analysis also matches the candidate's experience and skills gained from previous internships and projects. However, the job description does not explicitly mention remote work options, which is the candidate's strong preference for non-summer terms, preventing a perfect score.",
+      "source": "handshake",
+      "would_apply": false
+    },
+    {
+      "id": "c56b70f8217f",
+      "role": "Artificial Intelligence / Machine Learning Internship, Dedrone",
+      "company": "Axon",
+      "location": "Sterling, VA (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418929578/",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong fit for the Artificial Intelligence / Machine Learning Internship role, with a Master's in Data Science and experience in AI/ML technologies such as PyTorch and TensorFlow, as well as proficiency in Python. However, the role is onsite in Sterling, VA, which may not align with the candidate's preference for remote work during non-summer terms, but their skills and experience make them a good match.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "ab6edda30327",
+      "role": "Business Intelligence Engineer",
+      "company": "Symphony Bus International",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4418454417/",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Business Intelligence Engineer role, which aligns with their Data Engineering priority, and they have relevant experience with data pipelines, SQL, and cloud storage. The remote work arrangement also fits their preferred location for fall and spring internships/co-ops. Although the role is not explicitly labeled as a Data Engineering position, the candidate's skills in data engineering and experience with similar technologies make them a good fit.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "66760d88635c",
+      "role": "Data Engineer Co-op",
+      "company": "Manulife Financial",
+      "location": "Toronto, ON, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=eb4f0979-b592-4d65-9294-5da409710449",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineer Co-op role, which aligns with their top-priority target role, and they possess relevant skills such as experience with SQL, Python, and data pipelines. Although the job is hybrid and the candidate prefers remote work for fall internships, their skills and role priority fit outweigh this minor location mismatch. The candidate's experience and education also meet most of the job's requirements, making them a good fit for the position.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "0dff13750be2",
+      "role": "Data Engineer Co-op (Hybrid)",
+      "company": "PJM Interconnection",
+      "location": "Audubon, PA",
+      "link": "https://app.joinhandshake.com/jobs/10995992",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineering role at PJM Interconnection, which aligns with their top-priority role target, and they possess relevant skills such as building and orchestrating data pipelines, using technologies like Apache Airflow and Google Cloud Storage. The candidate's experience in data engineering and software engineering, as well as their proficiency in tools like Python, SQL, and data quality management, also align with the job requirements. However, the job description does not explicitly mention remote work options, which might be a concern given the candidate's strong preference for remote work during non-summer terms.",
+      "source": "handshake",
+      "would_apply": false
+    },
+    {
+      "id": "4a04fe61eedb",
+      "role": "Data Engineer Intern",
+      "company": "Global Partners",
+      "location": "Waltham, MA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=ca0bc21d-83d2-4d98-8755-eed51baa8c9f",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority target role, and they possess relevant skills such as experience with cloud platforms, Python, and data pipelines. Although the job is onsite, it's for a summer internship, which the candidate has indicated is acceptable. The candidate's background in data engineering, including their experience with AWS and Google Cloud Storage, also demonstrates a good alignment with the job requirements.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "bed628946255",
+      "role": "Data Engineer Intern - Data Platform TikTok BP - BS/MS",
+      "company": "TikTok",
+      "location": "San Jose, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=034929f5-3b54-450e-bcd7-de81a7fb989b",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority role, and they possess relevant skills such as experience with ETL, data pipelines, and big data technologies. The summer internship season also aligns with their location preference, allowing for an onsite internship in San Jose, CA. The candidate's experience and skills, including those demonstrated in their Data Engineering Intern role at Cadent, make them a good fit for the position.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "d8da50782628",
+      "role": "Data Engineer Intern - E-commerce - BS/MS",
+      "company": "TikTok",
+      "location": "San Jose, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=1179840a-8111-4070-ba58-0f0a0fe1fe17",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineer Intern role, which aligns with their top-priority role, and they possess relevant skills such as experience with data pipelines, ETL, and data analysis. The summer internship season also aligns with their location preference, allowing for an onsite internship in San Jose, CA. The candidate's experience and skills, including those demonstrated in their Data Engineering Intern role at Cadent, make them a good fit for the position.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "2c954483dfdf",
+      "role": "Data Engineer Junior (Informatica Powercenter Cloud)",
+      "company": "Babel",
+      "location": "Ayer, MA (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418432449/",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineer Junior role, which aligns with their top-priority role, and they possess relevant skills such as data pipeline development and experience with cloud platforms. However, the job is onsite in Ayer, MA, which may not align with the candidate's preference for remote work during non-summer terms, but their skills and role priority fit outweigh this consideration. The candidate's experience with data engineering tools and technologies, such as Apache Airflow and Google Cloud Storage, also demonstrates a good alignment with the job requirements.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "947ff9226486",
+      "role": "Data Engineering Intern",
+      "company": "APEX Analytix",
+      "location": "Greensboro, NC, USA",
+      "link": "https://simplify.jobs/jobs?jobId=595d9176-6938-4f50-aa6a-caaeeb14be2a",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineering Intern role, which aligns with their top-priority role, and they possess relevant skills such as Python, SQL, and experience with data pipelines and engineering. The summer internship season also aligns with their location preference, allowing for an onsite internship. The candidate's background in data science and engineering, as well as their experience with containerization and machine learning, make them a good fit for the role's requirements.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "2d13a7e81813",
+      "role": "Data Science Co-op",
+      "company": "LiveRamp",
+      "location": "San Francisco, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=ad1c1da2-c551-420d-8c70-be6e341cd787",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Science Co-op role, which aligns with their second-priority role target, and they possess relevant skills in data science, machine learning, and statistics. The summer internship season and onsite location in San Francisco also align with the candidate's preferences. The candidate's experience in data engineering and software development, as well as their projects and achievements, demonstrate a strong foundation for the role's requirements.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "6634fa8cf920",
+      "role": "Data Science Co-op",
+      "company": "Flagship Pioneering",
+      "location": "Cambridge, MA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=6d19c9fa-8aa4-4e2c-ac42-c79a1d477803",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Science Co-op role, which aligns with their second-priority role target, and they possess relevant skills such as Python, machine learning, and experience with cloud computing resources like GCP and AWS. The summer internship season also aligns with their location preference for onsite or hybrid work, and the role's requirements for fluency in Python and machine learning experience are well-met by the candidate's background. However, the role is not the candidate's top-priority target of Data Engineering, preventing a perfect score.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "5fb6766df765",
+      "role": "Data Science Intern",
+      "company": "Airbnb",
+      "location": "Remote",
+      "link": "https://app.joinhandshake.com/jobs/10996179",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Science Intern role at Airbnb, as it aligns with their second-priority role target and they have relevant experience in data engineering and software development, with skills in data pipelines, Python, and SQL. Although the job description mentions a PhD Data Science Intern, the candidate's master's program in Data Science and experience in data science projects, such as the ICU Predictive Analytics Platform, demonstrate a strong foundation in data science. The summer internship term also aligns with the candidate's location preference, allowing for onsite or hybrid work.",
+      "source": "handshake",
+      "would_apply": true
+    },
+    {
+      "id": "024e8a3dfdd2",
+      "role": "Data Science Intern",
+      "company": "Tencent",
+      "location": "Palo Alto, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=817874bc-4775-4ea6-ad0f-216a0bc763fd",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Science Intern role, which aligns with their second priority, and they possess relevant skills such as proficiency in Python, SQL, and experience with data analysis and modeling. The summer internship season also aligns with their location preference, allowing for an onsite internship in Palo Alto, CA. The candidate's background in data science and engineering, along with their experience in handling large complex datasets, makes them a strong fit for the role.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "f4edbcf4bb39",
+      "role": "Data Science Intern",
+      "company": "Visier Solutions",
+      "location": "Vancouver, BC, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=857991c9-99fb-48c5-be52-7e6b803452fe",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Science Intern role, which aligns with their second-priority role target, and they possess relevant skills such as statistical analysis, machine learning techniques, and coding skills in Python. The summer internship season also aligns with their location preference for onsite or hybrid work. However, the role is not their top-priority target of Data Engineering, preventing a perfect score.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "ff353da80cdb",
+      "role": "Data Scientist Intern",
+      "company": "SCAN",
+      "location": "Long Beach, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=94e3dc1e-3287-40a5-8a13-a3fcb9452c79",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Scientist Intern role, which aligns with their second priority, and they possess relevant skills such as proficiency in Python, statistics, and machine learning concepts, as well as experience with data analysis and interpretation. The hybrid schedule with on-site work in Long Beach, CA, is also acceptable for a summer internship, aligning with the candidate's location preferences. The candidate's strong analytical thinking, problem-solving skills, and experience with data pipelines and machine learning models further support their fit for the role.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "3e72e3f465a3",
+      "role": "Data Scientist Intern",
+      "company": "Booz Allen",
+      "location": "Honolulu, HI, USA + 10 more",
+      "link": "https://simplify.jobs/jobs?jobId=ede6409b-3f5d-44e0-84fe-98931b6a4e71",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Data Scientist Intern role, which aligns with their second-priority role target, and they possess relevant skills such as data analysis, data visualization, and experience with statistical programming languages. The summer internship season also aligns with their location preference, allowing for onsite work in Honolulu, HI. However, the role is not their top-priority target of Data Engineering, preventing a perfect score.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "366cc27c0e28",
+      "role": "Digital Intelligence Intern",
+      "company": "Eagle River Water and Sanitation District",
+      "location": "Vail, CO",
+      "link": "https://app.joinhandshake.com/jobs/11047031",
+      "fit_score": 8,
+      "reasoning": "The candidate's experience in data engineering and data science aligns well with the Digital Intelligence Intern role, and their skills in data pipelines, SQL, and Python are relevant to the position. Although Data Engineering is the candidate's top priority, the role is not explicitly labeled as such, but it still falls within their area of interest. The fully remote nature of the job also meets the candidate's location preference for fall and spring internships/co-ops.",
+      "source": "handshake",
+      "would_apply": false
+    },
+    {
+      "id": "a125177e9f96",
+      "role": "Engineering Co-Op - Fall 2026",
+      "company": "Precision Castparts Corp.",
+      "location": "Mentor, OH",
+      "link": "https://app.joinhandshake.com/jobs/10753297",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the co-op position, with a high-priority role fit in Data Engineering and relevant skills such as Apache Airflow, Google Cloud Storage, and Python. The candidate's experience in building and orchestrating data pipelines, developing ETL workflows, and participating in the full software development lifecycle aligns well with the job description. However, the job description does not explicitly mention remote work options, which is the candidate's strong preference for fall and spring internships/co-ops, preventing a perfect score.",
+      "source": "handshake",
+      "would_apply": false
+    },
+    {
+      "id": "465197e3c4e7",
+      "role": "Full Stack AI + Data Engineer",
+      "company": "TechTorch",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4416832408/",
+      "fit_score": 8,
+      "reasoning": "The candidate's experience in data engineering, software engineering, and full-stack development, along with their skills in AI systems, Python, and cloud platforms, make them a strong fit for the Full Stack AI + Data Engineer role at TechTorch. The role's emphasis on owning the complete product lifecycle and sitting at the center of client delivery aligns with the candidate's experience in developing and deploying production-level systems. However, the role's title and description suggest a stronger focus on full-stack AI engineering, which is the candidate's fourth priority, preventing a perfect score.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "dd525cb6a7ba",
+      "role": "GTM Data Engineer Intern",
+      "company": "Skydio",
+      "location": "San Mateo, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=f347053e-7fcf-47e6-b77d-386511416647",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong fit for the GTM Data Engineer Intern role, with relevant experience in data engineering, data pipelines, and SQL skills, aligning with the job's qualifications. Although the candidate prefers remote work, the summer internship season allows for onsite or hybrid work, making the San Mateo, CA location acceptable. The candidate's skills and experience, including building data pipelines and working with data warehouses, make them a good match for the role, despite lacking direct Salesforce experience.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "765e5ce074bb",
+      "role": "Intern \u2013 Data Engineering",
+      "company": "Octaura",
+      "location": "New York, NY, USA",
+      "link": "https://simplify.jobs/jobs?jobId=3ea65aaa-0297-4b8f-9378-51e35478fb95",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineering internship, with relevant experience in data engineering, Python, and SQL, and a high-priority role fit as Data Engineering is their top target role. The summer internship season aligns with their location preference for onsite or hybrid work, and the job requirements match their skills and background. The only potential drawback is that the candidate is a graduate student, while the job description prefers candidates within one year of undergraduate graduation, but their skills and experience make them a strong contender nonetheless.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "19a32efad851",
+      "role": "Junior Data Engineer",
+      "company": "DivIHN Integration, Inc.",
+      "location": "Corning, NY",
+      "link": "https://app.joinhandshake.com/jobs/11050443",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Junior Data Engineer (ETL) role, with relevant experience in data engineering, ETL development, and Apache Airflow, aligning with their top-priority role. However, the onsite location in Corning, NY, may be a drawback since the candidate prefers remote work for non-summer terms, but their skills and experience outweigh this consideration. The role's focus on data pipelines and workflows also aligns with the candidate's experience and skills, making them a good fit.",
+      "source": "handshake",
+      "would_apply": false
+    },
+    {
+      "id": "eef25535c424",
+      "role": "Machine Learning Co-op",
+      "company": "Flagship Pioneering",
+      "location": "Cambridge, MA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=ac7f146a-cf81-4a62-8ef7-0d137f0813e7",
+      "fit_score": 8,
+      "reasoning": "The candidate's experience in data engineering, software engineering, and machine learning projects, such as the ICU Predictive Analytics Platform and NBA Analytics Platform, demonstrate a strong skill alignment with the Machine Learning Co-op role. As Machine Learning Engineering is the candidate's third priority, this role is a good fit, and the summer internship season allows for onsite work in Cambridge, MA, which meets the location preference for this term. The candidate's fluency in Python and experience with relevant tools and techniques also support this match.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "0631a249beab",
+      "role": "Machine Learning Engineer Intern",
+      "company": "Cloudflare",
+      "location": "Austin, TX, USA",
+      "link": "https://simplify.jobs/jobs?jobId=1f3992a5-b615-416d-8650-f6a6a7316db4",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Machine Learning Engineer Intern role, which aligns with their third priority, and they possess relevant skills such as Python, software engineering, and experience with AI systems. The summer internship term also aligns with their location preference, allowing for onsite work in Austin, TX. The candidate's background in data science and engineering, as well as their experience with large-scale codebases and collaboration, make them a good fit for the role.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "2cd12a0c3dd6",
+      "role": "Machine Learning Engineer Intern",
+      "company": "PlusAI",
+      "location": "Santa Clara, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=681758c6-c283-429d-9627-0f285a799b54",
+      "fit_score": 8,
+      "reasoning": "The candidate's experience in data engineering, machine learning, and software engineering aligns well with the Machine Learning Engineer Intern role, and their skills in Python, data pipelines, and natural language processing are relevant to the job requirements. Although Machine Learning Engineering is the candidate's third priority, the summer internship season and onsite location in Santa Clara, CA, are acceptable according to their preferences. The candidate's strong technical background and experience with data pipelines and machine learning models make them a good fit for this role.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "b6107ebf598d",
+      "role": "Machine Learning Engineer Intern",
+      "company": "Cresta",
+      "location": "Toronto, ON, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=59e78c09-f1ef-47c3-87c8-2507432b9729",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Machine Learning Engineer Intern role, which aligns with their third priority, and they possess relevant skills such as proficiency in Python and experience with machine learning fundamentals, as seen in their ICU Predictive Analytics Platform and NBA Analytics Platform projects. Although the role is onsite in Toronto, it's for a summer internship, which aligns with the candidate's location preferences. The candidate's background in data science and engineering also complements the job requirements, making them a good fit.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "3957dc684bb5",
+      "role": "Machine Learning Engineer Intern",
+      "company": "Avride",
+      "location": "Austin, TX, USA",
+      "link": "https://simplify.jobs/jobs?jobId=b5c4e929-43e1-4ad9-80a0-88c5cce305b1",
+      "fit_score": 8,
+      "reasoning": "The candidate is a good match for the Machine Learning Engineer Intern role, which aligns with their third priority, and they possess relevant skills such as Python, data pipelines, and experience with machine learning models. Although the role requires onsite presence in Austin, TX, it's for a summer internship, which is acceptable according to the candidate's location preferences. The candidate's strong analytical mindset and experience with data engineering and machine learning projects demonstrate a good fit for the role's requirements.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "5c0261240aa0",
+      "role": "Machine Learning Engineer Intern",
+      "company": "Neuralink",
+      "location": "Fremont, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=69f769a1-69e0-4347-b4c0-00b287637051",
+      "fit_score": 8,
+      "reasoning": "The candidate's experience in building machine learning models, data pipelines, and working with complex datasets aligns well with the job requirements, and Machine Learning Engineering is their third priority role. Although the job is onsite, it's for a summer internship, which the candidate finds acceptable, and the company's focus on developing implantable brain-computer interfaces offers a unique opportunity for growth. The candidate's strong coding skills, experience with data analysis, and ability to communicate results to both technical and non-technical stakeholders make them a good fit for this role.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "ccd553ed52c2",
+      "role": "Specialist - Data Engineering",
+      "company": "Charles Schwab",
+      "location": "Westlake, TX (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4414339150/",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineering role, which is their top priority, and they have relevant experience with data pipelines, SQL, and Unix/Linux environments from their previous internships and projects. Their skills in Apache Airflow, Google Cloud Storage, and GitHub also align with the job requirements, although they may need to learn about specific tools like Safeguard and Veracode. The hybrid work arrangement may not be ideal for the candidate, who prefers remote work for non-summer terms, but it's not a deal-breaker given the strong role and skill alignment.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "280703fb2ee3",
+      "role": "Support Group Intern - Data Engineering",
+      "company": "Sundt",
+      "location": "Tempe, AZ, USA",
+      "link": "https://simplify.jobs/jobs?jobId=35106f14-8508-4414-8567-d73bfb3ed891",
+      "fit_score": 8,
+      "reasoning": "The candidate is a strong match for the Data Engineering internship, with relevant experience in data pipelines, ETL processes, and SQL, aligning with the job requirements. As Data Engineering is the candidate's top-priority role, this internship is a good fit, and the summer season allows for onsite work, which is acceptable according to their preferences. The candidate's skills and experience, such as working with Apache Airflow and Google Cloud Storage, also demonstrate a strong foundation for the role.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "13a5dd95aae5",
+      "role": "AI & Data Engineering Intern",
+      "company": "Centerstream",
+      "location": "Lexington, KY (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4419526315/",
+      "fit_score": 7,
+      "reasoning": "The candidate is a strong fit for the AI & Data Engineering Intern role, with relevant experience in data engineering, machine learning, and data analysis, and is currently pursuing a degree in Data Science. However, the role is listed as a hybrid position in Lexington, KY, which may not align with the candidate's strong preference for remote work during non-summer terms, but since it's not strictly onsite-only, it still presents a good opportunity.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "e44cf23521ff",
+      "role": "Data Engineer Intern",
+      "company": "HEXAWARE",
+      "location": "Chicago, IL, USA",
+      "link": "https://simplify.jobs/jobs?jobId=3b2df1b1-de52-40af-b5e6-97ad417126f1",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Data Engineer Intern role, which aligns with their top-priority role, and they possess relevant skills such as Python, SQL, and experience with data pipelines and engineering. However, the job requires onsite presence in Chicago, which may be a drawback since the candidate prefers remote work for non-summer terms. The candidate's strong background in data engineering and experience with big data technologies make them a solid fit, despite some potential skill gaps in specific tools like PySpark and Databricks.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "dd57de84b494",
+      "role": "Data Science Co-op",
+      "company": "Johnson & Johnson",
+      "location": "Cincinnati, OH, USA",
+      "link": "https://simplify.jobs/jobs?jobId=10c9fdd5-db6d-4b90-9a9e-da30f76299d4",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Data Science Co-op role, as it aligns with their second priority role and they demonstrate proficiency in Python, a required skill. However, the role is not their top priority, and the job description has some mechanical and electrical engineering requirements that are not directly mentioned in the candidate's experience. The location preference is not fully aligned, as the candidate prefers remote work for fall internships, but the job description does not specify the work arrangement.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "7d0733f58cac",
+      "role": "Data Science Intern",
+      "company": "AffinitySolutions",
+      "location": "New York, NY + 2",
+      "link": "https://app.joinhandshake.com/jobs/11018827",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Data Science Intern role, which aligns with their second-priority role target, and they possess relevant skills such as data pipeline development, machine learning model building, and data analysis. However, the role is not their top priority, and the location preference is not explicitly stated as remote for this job, which prevents a higher score. The candidate's strong technical background and experience in data science projects demonstrate their potential to excel in this role.",
+      "source": "handshake",
+      "would_apply": true
+    },
+    {
+      "id": "3a3cf959bf44",
+      "role": "Data Scientist Intern",
+      "company": "Ardian",
+      "location": "New York, NY, USA",
+      "link": "https://simplify.jobs/jobs?jobId=bb4315b8-bb8b-468f-932a-30ee22b6b85c",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Data Scientist Intern role, which aligns with their second-priority role target, and they possess relevant skills such as Python proficiency and data science experience. However, the role is not their top priority, and the onsite requirement in New York, NY, may not be ideal, but it is acceptable since it's a summer internship. The candidate's background in data engineering and machine learning also complements the data science requirements, making them a strong contender.",
+      "source": "simplify",
+      "would_apply": true
+    },
+    {
+      "id": "32d40c17af21",
+      "role": "Full Stack Data Scientist",
+      "company": "Jobs via Dice",
+      "location": "Austin, TX (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4416564103/",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Full Stack Data Scientist role, as their experience in data engineering and software development aligns with the job requirements, and data science is their second-priority role. However, the job description has a stronger focus on data science expertise, which is not the candidate's top priority, and there are some skill gaps, such as experience with Power BI, Qlik, or similar BI tools. The remote work arrangement also aligns with the candidate's location preference for fall and spring internships/co-ops.",
+      "source": "linkedin",
+      "would_apply": false
+    },
+    {
+      "id": "908c83f00331",
+      "role": "Machine Learning Intern",
+      "company": "EarnIn",
+      "location": "Mountain View, CA (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4399402154/",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Machine Learning Intern role, which aligns with their third priority, and they have relevant experience in machine learning and data engineering from their projects and internships. However, the role is not their top priority, and the hybrid work arrangement may not be ideal for non-summer terms, but since it's a summer-acceptable term, the location is not a major issue. The candidate's skills in machine learning, data pipelines, and software engineering are well-aligned with the job requirements.",
+      "source": "linkedin",
+      "would_apply": true
+    },
+    {
+      "id": "f96ef463048a",
+      "role": "Machine Learning Intern",
+      "company": "Marvell",
+      "location": "Toronto, ON, Canada",
+      "link": "https://simplify.jobs/jobs?jobId=e7dc73e1-21cf-4c81-add9-6e05ab194abd",
+      "fit_score": 7,
+      "reasoning": "The candidate's skills in Python, data pipelines, and machine learning algorithms align with the job requirements, and Machine Learning Engineering is their third priority role, showing a good fit. However, the job is onsite in Toronto, Canada, which may not be ideal for the candidate, but since it's a summer internship, the location and season are acceptable. The candidate's experience and skills demonstrate a strong foundation for the role, but some desired qualifications like deep learning frameworks and linear algebra algorithms are not explicitly mentioned in their resume.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "6a23e67621ca",
+      "role": "Student Engineering Intern - Data Science",
+      "company": "RESPEC",
+      "location": "Rapid City, SD, USA",
+      "link": "https://simplify.jobs/jobs?jobId=8370f5b4-e4c5-4cd8-8d48-50a580ca3d04",
+      "fit_score": 7,
+      "reasoning": "The candidate is a good match for the Data Science internship, as they have demonstrated knowledge in data science, machine learning, and artificial intelligence, and have relevant experience in data engineering and software development. However, the role is not the candidate's top priority, and the onsite requirement in Rapid City, SD, may be less desirable, but it's acceptable since it's a summer internship. The candidate's skills in Python, data analysis, and database systems also align with the job requirements.",
+      "source": "simplify",
+      "would_apply": false
+    },
+    {
+      "id": "f3a278ac2de4",
+      "role": "AI ML Engineer",
+      "company": "VeeRteq Solutions LLC",
+      "location": "Washington, DC (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4418625518/",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in Python, SQL, and experience with Machine Learning align with some of the job requirements, but the role is an AI ML Engineer, which is the candidate's third priority, and there are notable skill gaps in areas like Generative AI and LLM frameworks. The job is also onsite in Washington, DC, which may not align with the candidate's preference for remote work during non-summer terms.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "09bc15438c27",
+      "role": "AI/ML Engineering Intern",
+      "company": "Bowler Pons Solutions Consultants, LLC",
+      "location": "Annapolis, MD",
+      "link": "https://app.joinhandshake.com/jobs/10896210",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in software engineering, data engineering, and machine learning are notable, but the job description prioritizes AI/ML engineering, which is the candidate's third priority, and the role involves hardware integration and robotics, which are not mentioned in the candidate's experience. The location and season are not specified, but assuming a non-summer term, the candidate's strong preference for remote work may not be met, further reducing the match score.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "3a60bde71e09",
+      "role": "Applied AI Product Intern",
+      "company": "OCBridge",
+      "location": "San Jose, CA",
+      "link": "https://app.joinhandshake.com/jobs/11051753",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in data engineering, software engineering, and AI systems are notable, but the Applied AI Product Intern role seems to be a partial match as it doesn't directly align with their top-priority role of Data Engineering. The candidate's experience and skills are relevant, but the role's focus on product thinking, workflow design, and rapid prototyping may require additional skills or experience. The location and season are not specified, but assuming a non-summer term, the candidate's strong preference for remote work may be a consideration.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "38253f04d8d2",
+      "role": "CRM Analytics Intern",
+      "company": "The Row",
+      "location": "New York, NY",
+      "link": "https://app.joinhandshake.com/jobs/11024068",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in data analysis, reporting, and technical abilities align with some aspects of the job, but the role is more focused on CRM strategy and clienteling initiatives, which is not a top-priority role for the candidate. The job description does not explicitly mention data engineering, data science, or machine learning engineering, which are the candidate's priority roles, resulting in a partial match. Additionally, the location and season are not specified, but assuming a non-summer term, the candidate's strong preference for remote work may not be met.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "24ee3ac2828e",
+      "role": "Data Science Intern",
+      "company": "Cooperative Producers, Inc",
+      "location": "Hastings, NE",
+      "link": "https://app.joinhandshake.com/jobs/11040748",
+      "fit_score": 6,
+      "reasoning": "The candidate is a good fit for data-related roles, but Data Science is their second priority, and the job description does not explicitly mention Data Engineering, which is their top priority. The candidate's skills in data analysis, pipeline development, and machine learning are relevant to the job, but the role is not perfectly aligned with their priorities, and the location/season details are not provided to assess remote/on-site preferences.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "4365b4b33d11",
+      "role": "Founding Machine Learning Engineer",
+      "company": "BehaviorAI",
+      "location": "New York City Metropolitan Area (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4419514525/",
+      "fit_score": 6,
+      "reasoning": "The candidate's background in data science and software engineering is relevant, but the job description is for a founding Machine Learning Engineer, which is the candidate's third priority role. The job is also onsite in the New York City Metropolitan Area, which may not align with the candidate's preference for remote work during non-summer terms. However, the candidate's experience with machine learning models and software engineering skills are notable, making it a partial match.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "22ec47f8df20",
+      "role": "Intern Data Scientist",
+      "company": "Berkshire Hathaway Energy",
+      "location": "Des Moines, IA, USA + 4 more",
+      "link": "https://simplify.jobs/jobs?jobId=35c7dfcc-afe1-459c-a673-80bb4da32165",
+      "fit_score": 6,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, and Machine Learning Engineering, but the job is for a Data Scientist, which is their second priority. The job requires skills in data analysis, communication, and problem-solving, which the candidate has demonstrated through their experience and projects, but there are some skill gaps, such as working with Microsoft Office. The location is onsite, which is acceptable for a summer internship, but the role is not a perfect fit for the candidate's priorities and skills.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "9c33f13ae4e7",
+      "role": "Machine Learning Engineer",
+      "company": "Tech Consulting",
+      "location": "Virginia, United States (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4416852714/",
+      "fit_score": 6,
+      "reasoning": "The candidate's background in data science and engineering, as well as experience with relevant technologies like Python, SQL, and cloud platforms, aligns with the machine learning engineer role, which is the candidate's third priority. However, the job requires 1+ years of work experience with AWS and Python, which the candidate may not fully meet, and the location is onsite in Virginia, which may not be ideal for the candidate's preferred remote work setup during non-summer terms.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "81bdba766a21",
+      "role": "Quality AI/ML Engineer I",
+      "company": "Glaukos Corporation",
+      "location": "Aliso Viejo, CA (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4416855413/",
+      "fit_score": 6,
+      "reasoning": "The candidate's background in data science and software engineering, along with experience in machine learning and AI, makes them a partial match for the Quality AI/ML Engineer I role, which is their third priority. However, the job requires onsite presence in Aliso Viejo, CA, which may not align with the candidate's preference for remote work during non-summer terms. The candidate's skills in machine learning, AI, and data engineering are relevant, but the role's focus on quality monitoring and regulatory environments may require additional knowledge or experience.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "e1a7ea1f65b0",
+      "role": "SROC-Volunteer-Research Data Analyst",
+      "company": "NYIT - On Campus Student Employment",
+      "location": "New York, NY",
+      "link": "https://app.joinhandshake.com/jobs/10952429",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in Python, data engineering, and machine learning are relevant to the job, but the role is not a top priority for them, and there are notable skill gaps in Vision Transformers and computer vision. The job's onsite requirement in NYC/Manhattan for a non-summer term may also be a drawback given the candidate's strong preference for remote work during fall and spring. Overall, the candidate meets some requirements, but the role is not a perfect fit in terms of priority or location.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "511bb904222f",
+      "role": "Scientific Data Researcher",
+      "company": "Guidehouse",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4418440051/",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in data engineering, machine learning, and software engineering are notable, but the job title \"Scientific Data Researcher\" does not explicitly align with their top-priority role of Data Engineering. The remote location is a strong fit for a fall or spring internship, but the role itself seems to be a partial match, requiring some data research skills that are not explicitly highlighted in the candidate's experience.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "83fd6b096b8e",
+      "role": "Software Engineer Intern",
+      "company": "Hadrian",
+      "location": "Torrance, CA",
+      "link": "https://app.joinhandshake.com/jobs/11054552",
+      "fit_score": 6,
+      "reasoning": "The candidate's experience in software engineering and data engineering is relevant to the Software Engineer Intern role, but it's a lower-priority role for the candidate, who prefers Data Engineering, Data Science, or Machine Learning Engineering. The job description doesn't explicitly require data science or machine learning skills, creating a notable skill gap, and the location preference for fall and spring internships is remote, which may not align with the company's expectations.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "5b09c937c678",
+      "role": "Software Engineer Intern",
+      "company": "Hometown Nannies Plus, LLC",
+      "location": "Remote or Westport, CT",
+      "link": "https://app.joinhandshake.com/jobs/11048845",
+      "fit_score": 6,
+      "reasoning": "The candidate's skills in software engineering, AI systems, and full-stack development align with some aspects of the job, but the role is a lower-priority software engineering position, and the candidate's top priority is data engineering. The remote location is a good fit for a fall or spring internship, but the unpaid nature and lack of direct alignment with the candidate's top priorities reduce the overall match. The candidate's experience and skills demonstrate potential, but there are notable gaps in direct experience with UI/UX design and AI-driven marketing initiatives.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "dc9d4565b9f1",
+      "role": "AI & Machine Learning Researcher",
+      "company": "Handshake AI",
+      "location": "Remote",
+      "link": "https://app.joinhandshake.com/jobs/11027306",
+      "fit_score": 4,
+      "reasoning": "The candidate's skills in machine learning, artificial intelligence, and computer science research are relevant to the job, but the role is not a top-priority match as it is more focused on research and evaluation rather than data engineering or data science. Additionally, the job requires a PhD from a top 100 US university, which the candidate does not have, and the flexible schedule may not align with the candidate's preferences for a traditional internship or co-op experience. The remote work arrangement is a positive aspect, but overall the candidate's profile does not strongly align with the job requirements.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "b47ca602ed79",
+      "role": "AI Engineer",
+      "company": "Jobright.ai",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4417512537/",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job posting is for an AI Engineer, which is not explicitly listed as a priority. The candidate has relevant skills in AI systems, software engineering, and data engineering, but the role does not perfectly align with their top priorities. The job is remote, which aligns with the candidate's location preference for fall and spring internships/co-ops.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "2def97c266d0",
+      "role": "Creative Technology Intern",
+      "company": "G&A",
+      "location": "New York City, NY",
+      "link": "https://app.joinhandshake.com/jobs/11054312",
+      "fit_score": 4,
+      "reasoning": "The candidate's skills in data engineering and science are notable, but the job description for G&A does not explicitly mention a data-related role, suggesting a potential mismatch. The candidate's top priority is a data engineering role, which may not align with the G&A internship, and there is no clear indication of remote work options for non-summer terms. Overall, the candidate's skills and priorities do not strongly align with the job description, resulting in a partial match.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "f0ff4c9d48f6",
+      "role": "Data Engineer / Data Platform Engineer Intern",
+      "company": "Dow Chemical Company",
+      "location": "Urbana, IL, USA",
+      "link": "https://simplify.jobs/jobs?jobId=cefe7686-8ed8-4de2-9e94-eb0695937318",
+      "fit_score": 4,
+      "reasoning": "The candidate is a good fit for the Data Engineer role, with relevant experience in building data pipelines and working with cloud-based solutions, but the job requires enrollment at the University of Illinois Urbana Champaign, which does not match the candidate's current enrollment at Northeastern University. Additionally, the job does not specify remote work options, which is a strong preference for the candidate during the fall season.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "1f43104bbdae",
+      "role": "Data Engineer Intern",
+      "company": "Fairlife",
+      "location": "Chicago, IL, USA",
+      "link": "https://simplify.jobs/jobs?jobId=f2291346-41fa-4da7-b473-1cf76c30b40b",
+      "fit_score": 4,
+      "reasoning": "The candidate is a good fit for the data engineering aspect of the role, with relevant experience in data pipelines, Python, and SQL, but the job description prioritizes undergraduate students entering their senior year, whereas the candidate is a master's student. The role is also onsite in Chicago, which may not align with the candidate's location preferences, although it is a summer internship, making onsite or hybrid acceptable. The candidate's skills and experience are strong, but the role's requirements and target demographic are not the best fit.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "2e2a5bbfd175",
+      "role": "Data Engineer Intern",
+      "company": "Medpace, Inc.",
+      "location": "Cincinnati, OH, USA",
+      "link": "https://simplify.jobs/jobs?jobId=e484710b-5e00-46ed-bb45-b6b53b1559ac",
+      "fit_score": 4,
+      "reasoning": "The candidate's skills in data engineering, such as building data pipelines and working with ETL workflows, align with the job requirements, but the role is onsite-only in Cincinnati, OH, which is not preferred for a fall internship. Additionally, while data engineering is the candidate's top priority, the job description does not explicitly target master's or graduate students, and some requirements, such as experience with specific tools like Snowflake or Azure Sql, are not mentioned in the candidate's resume. The candidate's strong background in data engineering and related skills makes them a partial match, but the location and season preferences are not well-aligned.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "e5f051adbd54",
+      "role": "Data Scientist",
+      "company": "Procter & Gamble (P&G)",
+      "location": "Cincinnati, OH",
+      "link": "https://app.joinhandshake.com/jobs/11054224",
+      "fit_score": 4,
+      "reasoning": "The job description does not explicitly mention the role type, but based on the description, it seems to be a data science role, which is the candidate's second priority. The candidate has relevant skills in data engineering and data science, but the job location is onsite in Cincinnati, which may not align with the candidate's preference for remote work during non-summer terms.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "479d2d908dd1",
+      "role": "Jr Developer, Trust Platforms",
+      "company": "1Password",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4418431577/",
+      "fit_score": 4,
+      "reasoning": "The Jr Developer, Trust Platforms role at 1Password is a software engineering position, which is the candidate's fourth priority, indicating a partial match. Although the candidate has relevant software engineering experience and skills, the role does not align with their top priorities of Data Engineering, Data Science, or Machine Learning Engineering. The remote work arrangement is a plus, but the overall role priority and skill alignment are not strong enough to consider this an excellent match.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "5035e84fa590",
+      "role": "K12 Zone Engineering Intern",
+      "company": "Stride, Inc.",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4418187824/",
+      "fit_score": 4,
+      "reasoning": "The candidate's top priority is Data Engineering, but the job description is for a K12 Zone Engineering Intern, which seems to be more related to Software Engineering, their fourth priority. Although the candidate has relevant experience in software engineering and data engineering, the role type is not their top priority, and there is no clear indication of data science or data engineering responsibilities in the job description.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "1f8030aaa8dd",
+      "role": "Machine Learning Engineer",
+      "company": "Kitware",
+      "location": "Clifton Park, NY + 1",
+      "link": "https://app.joinhandshake.com/jobs/11070076",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, and Machine Learning Engineering, but the job is for a Machine Learning Engineer, which is the third priority, and there are notable skill gaps, such as the requirement for experience with deep learning libraries and visual data. The job also requires onsite work, which is not the candidate's preference for non-summer terms. The candidate's skills in Python, data pipelines, and machine learning are relevant, but the overall match is partial due to the role priority and location/season mismatch.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "2cc9879bc8fc",
+      "role": "Machine Learning Infrastructure Engineer Intern",
+      "company": "PlusAI",
+      "location": "Santa Clara, CA, USA",
+      "link": "https://simplify.jobs/jobs?jobId=16f8011e-fc9d-4983-89eb-fa56f1bafc0d",
+      "fit_score": 4,
+      "reasoning": "The candidate's skills in data engineering and software development are notable, but the job requires strong proficiency in C++, PyTorch, and GPU programming, which are not explicitly mentioned in the candidate's experience. The role of Machine Learning Infrastructure Engineer Intern is the candidate's third priority, and while it aligns with their interests, the onsite requirement in Santa Clara, CA, is acceptable given it's a summer internship.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "258ffe50eb4a",
+      "role": "Machine Learning Intern",
+      "company": "Bank of Montreal",
+      "location": "Chicago, IL, USA",
+      "link": "https://simplify.jobs/jobs?jobId=562cbc1f-78de-477b-af0a-f684cdf59545",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, and Machine Learning Engineering, but Machine Learning Intern is their third priority, indicating a partial match. The candidate's skills in machine learning, data pipelines, and programming languages align with the job requirements, but the onsite location in Chicago for a fall internship may be a drawback since they prefer remote work during non-summer terms. Overall, the candidate's skills and experience show potential, but the role and location are not their top preferences.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "d9ac33c50536",
+      "role": "PhD Machine Learning Engineer Intern",
+      "company": "Stripe",
+      "location": "Seattle, WA, USA + 2 more",
+      "link": "https://simplify.jobs/jobs?jobId=3c25c72e-92ba-41f7-9597-6f68045b9743",
+      "fit_score": 4,
+      "reasoning": "The candidate is a first-year master's student, but the job requires a PhD student, creating a notable educational mismatch. Although the candidate has relevant machine learning experience and skills, the role is a lower priority for them, listed as PRIORITY 3 \u2014 Machine Learning Engineering, and the location is onsite for summer, which is acceptable, but the overall fit is partial due to the educational requirement and role priority. The candidate's skills in Python, SQL, and experience with machine learning models are relevant, but the job's specific requirements and expectations are not fully aligned with their current profile.",
+      "source": "simplify",
+      "would_apply": null
+    },
+    {
+      "id": "d50dfc1d34db",
+      "role": "Software Development Engineer Internship - Fall 2026 (US)",
+      "company": "Amazon",
+      "location": "Seattle, WA",
+      "link": "https://app.joinhandshake.com/jobs/11034604",
+      "fit_score": 4,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a Software Development Engineer (SDE) internship, which is the candidate's fourth priority. Although the candidate has relevant software engineering skills and experience, the role is not their top priority, and the job's onsite requirement for a fall internship may not align with the candidate's strong preference for remote work during non-summer terms. The candidate's skills in programming languages, data pipelines, and software development are notable, but the role's focus on software development may not fully utilize their data science and engineering skills.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "e0cbe534f749",
+      "role": "Software Engineer",
+      "company": "Jobs via Dice",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4417528622/",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and then Software Engineering, making this Software Engineer role a lower-priority fit. Although the candidate has relevant software engineering skills and experience, the role's focus on database management and development may not fully align with their primary interests and strengths. The remote work arrangement is a positive aspect, but the overall role priority and potential skill gaps result in a partial match.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "1b97e16c2bc2",
+      "role": "Software Engineer (Thermal & Fluid Analysis)",
+      "company": "SpaceX",
+      "location": "Texas, United States (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418454757/",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job is for a Software Engineer with a focus on Thermal & Fluid Analysis, which is not a top priority for the candidate. Although the candidate has some relevant software engineering skills, the role's specific requirements and onsite location in Texas for a non-summer term are not well-aligned with the candidate's preferences and priorities. The candidate's skills in data engineering and science are not directly applicable to this software engineering role with a thermal and fluid analysis focus.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "c8d709c26833",
+      "role": "Software Engineer, Enterprise Products",
+      "company": "Lincoln Center for the Performing Arts",
+      "location": "New York, NY (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4417523694/",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job is for a Software Engineer, which is the lowest priority. Although the candidate has relevant software engineering skills from their experience and projects, the role is not the best fit in terms of priority, and the job requires onsite presence in New York, which may not be ideal for a non-summer term. The candidate's skills in programming languages and software development are notable, but the overall alignment with their priorities and preferences is partial.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "ad7d70d1b42d",
+      "role": "Software Intern Summer 2026",
+      "company": "Black Pearl Technology, Inc.",
+      "location": "The Woodlands, TX",
+      "link": "https://app.joinhandshake.com/jobs/11019065",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, and Machine Learning Engineering, but the job description is for a Software Intern, which is their fourth priority. Although the candidate has relevant software engineering skills, the role is not their top priority, and the onsite requirement for a summer internship is acceptable, but the role itself is not the best fit. The candidate's skills in data engineering, machine learning, and software development are notable, but the job description does not strongly align with their primary interests.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "b962038bde70",
+      "role": "System Analysis Engineer",
+      "company": "Storage Solutions - A Jungheinrich Company",
+      "location": "Westfield, IN (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4417521021/",
+      "fit_score": 4,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a System Analysis Engineer, which is not a direct match. The candidate has relevant skills in data engineering and software development, but the role type is not a high-priority match. The job is remote, which aligns with the candidate's location preference for fall and spring internships/co-ops.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "cf5b599e2ee2",
+      "role": "Brand Protection Analitycs Co-Op",
+      "company": "Johnson & Johnson",
+      "location": "Raritan, NJ",
+      "link": "https://app.joinhandshake.com/jobs/11048683",
+      "fit_score": 2,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description does not explicitly mention these roles, instead focusing on Innovative Medicine and MedTech. The job is also onsite-only in Raritan, New Jersey, which does not align with the candidate's strong preference for remote work during non-summer terms. The candidate's skills in data engineering, machine learning, and software engineering do not directly match the job description's focus on healthcare innovation.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "5c2e1acf0c60",
+      "role": "Compiler Engineer Intern",
+      "company": "TetraMem Inc.",
+      "location": "San Jose, CA",
+      "link": "https://app.joinhandshake.com/jobs/11055669",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles do not align with the Compiler Engineer position, as their top priorities are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, with no mention of compiler engineering. The role also does not match the candidate's skill set, which is focused on data engineering, machine learning, and software development. Additionally, the job description does not specify the location or season, but given the candidate's strong preference for remote work during non-summer terms, an onsite-only requirement would further reduce the match.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "faca76d252ab",
+      "role": "Data Coordinator",
+      "company": "Sarah Cannon Research Institute",
+      "location": "Nashville, TN (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4418407911/",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job posting is for a Data Coordinator, which is not explicitly mentioned as a target role. The job is also hybrid and located in Nashville, TN, which does not align with the candidate's strong preference for remote work during non-summer terms.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "70f8ad308350",
+      "role": "Data Engineer",
+      "company": "Ledelsea",
+      "location": "Remote",
+      "link": "https://app.joinhandshake.com/jobs/11064865",
+      "fit_score": 2,
+      "reasoning": "The candidate is a poor match for this job due to the role requiring 3-4 years of professional data engineering experience, which the candidate lacks, and the mandatory onsite location requirement, which contradicts the candidate's strong preference for remote work during non-summer terms. The candidate's skills in data engineering, such as ETL workflows and data pipelines, are relevant, but the experience gap and location mismatch outweigh these strengths. The role is in the candidate's top-priority area of Data Engineering, but the other factors make it a poor fit.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "17e56c26a793",
+      "role": "Data Quality Specialist",
+      "company": "Applied Intuition",
+      "location": "Sunnyvale, CA (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4417508539/",
+      "fit_score": 2,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job posting is for a Data Quality Specialist, which is not explicitly mentioned as a priority. Additionally, the job requires onsite work in Sunnyvale, CA, which does not align with the candidate's strong preference for remote work during non-summer terms. The candidate's skills in data engineering and data science are relevant, but the role and location do not align with their priorities.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "94daaaa253bb",
+      "role": "Data Visualization Specialist",
+      "company": "Accenture Federal Services",
+      "location": "Suitland, MD (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418425365/",
+      "fit_score": 2,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job is for a Data Visualization Specialist, which is not mentioned as a priority. The job also requires onsite presence in Suitland, MD, which does not align with the candidate's strong preference for remote work during fall and spring internships/co-ops.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "41e1c350aa86",
+      "role": "Diagnostic Software Engineer",
+      "company": "PACCAR",
+      "location": "Lewisville, TX (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418446848/",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a Diagnostic Software Engineer, which is not a top priority. The location is also onsite-only in Lewisville, TX, which may not align with the candidate's preference for remote work during non-summer terms. The candidate's skills in software engineering and data engineering are relevant, but the role and location do not strongly align with their priorities.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "1d4cfa77e1ad",
+      "role": "Energy Systems Research Engineer Intern",
+      "company": "Gridmatic",
+      "location": "Cupertino, CA (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4414378679/",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for an Energy Systems Research Engineer Intern, which is not a direct match. The job requires specific knowledge of electricity market simulation, SCUC/SCED development, and network security analysis, which are not mentioned in the candidate's resume, and the onsite location in Cupertino, CA for a non-summer term also does not align with the candidate's remote preference.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "953fe7ccc728",
+      "role": "Engineering Emerging Talent Intern (Fall)",
+      "company": "Metropolitan Transportation Authority (MTA)",
+      "location": "New York, NY",
+      "link": "https://app.joinhandshake.com/jobs/11026571",
+      "fit_score": 2,
+      "reasoning": "The job is an onsite-only internship in Staten Island, NY, which does not align with the candidate's strong preference for remote work during the fall and spring seasons. The role type is also not explicitly mentioned as a data engineering, data science, machine learning engineering, or software engineering position, which are the candidate's priority roles. The candidate's skills in data engineering and software development may be relevant, but the location and role type are not a good fit.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "18fae60f09c3",
+      "role": "Field Application Engineer - New College Graduate 2026",
+      "company": "NVIDIA",
+      "location": "Massachusetts, United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4417513149/",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a Field Application Engineer, which doesn't directly align with their priorities. The job is also full-time and not an internship/co-op, which is what the candidate is looking for. Additionally, the location is onsite in Massachusetts, but the candidate prefers remote work for non-summer terms.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "006c18a72ca6",
+      "role": "Forward Deployed Engineer",
+      "company": "Doppel",
+      "location": "Utica-Rome Area (Hybrid)",
+      "link": "https://www.linkedin.com/jobs/view/4418454616/",
+      "fit_score": 2,
+      "reasoning": "The job is for a Forward Deployed Engineer, which is not a top-priority role for the candidate, and the location is onsite in the Utica-Rome Area, which does not align with the candidate's preference for remote work during non-summer terms. The candidate's skills in data engineering, software engineering, and machine learning are not directly applicable to the job description provided.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "a28fd4271fad",
+      "role": "IT Solutions Engineering Co-op",
+      "company": "Ahold Delhaize USA",
+      "location": "Quincy, MA",
+      "link": "https://app.joinhandshake.com/jobs/11052091",
+      "fit_score": 2,
+      "reasoning": "The candidate is a poor match for this role due to the onsite requirement for a non-summer term, which contradicts their strong preference for remote work during fall and spring. The role itself, IT Solutions Engineering Co-op, does not align with the candidate's top priorities of Data Engineering, Data Science, or Machine Learning Engineering. The candidate's skills and experience are not directly applicable to this role, further reducing the match quality.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "339273342cab",
+      "role": "Machine Learning PhD Intern, Economics",
+      "company": "Instacart",
+      "location": "United States (Remote)",
+      "link": "https://www.linkedin.com/jobs/view/4404860851/",
+      "fit_score": 2,
+      "reasoning": "The job requires a PhD in Machine Learning, which the candidate does not have, being a first-year master's student in Data Science. Additionally, the role is more focused on economics, which is not mentioned in the candidate's experience or skills, making it a poor match. The remote work option is a positive aspect, but it's not enough to outweigh the other mismatches.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "5756693b158b",
+      "role": "Project Engineer - Data Center",
+      "company": "Actalent",
+      "location": "Fargo, ND (On-site)",
+      "link": "https://www.linkedin.com/jobs/view/4418463282/",
+      "fit_score": 2,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job is for a Project Engineer - Data Center, which does not align with their target roles. Additionally, the job requires onsite work in Fargo, ND, which does not meet the candidate's preference for remote work during non-summer terms. The candidate's skills in data engineering and software development are not directly applicable to the job description.",
+      "source": "linkedin",
+      "would_apply": null
+    },
+    {
+      "id": "3c804bbe6279",
+      "role": "Software Engineering Interns",
+      "company": "ConveyThis",
+      "location": "New York, NY",
+      "link": "https://app.joinhandshake.com/jobs/11017772",
+      "fit_score": 2,
+      "reasoning": "The candidate's top priority roles are Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a Software Engineering Intern, which is the candidate's 4th priority. The candidate prefers remote work for non-summer terms, but the job is onsite-only in NYC, which is a significant mismatch. The candidate's skills in Python, SQL, and experience with large-scale codebases are relevant, but the primary stack for the job is PHP, Laravel, and MySQL, which is not highlighted in the candidate's experience.",
+      "source": "handshake",
+      "would_apply": null
+    },
+    {
+      "id": "b7c067c709f1",
+      "role": "Summer Intern - Software Engineer",
+      "company": "Allegion",
+      "location": "Carmel, IN",
+      "link": "https://app.joinhandshake.com/jobs/11054117",
+      "fit_score": 2,
+      "reasoning": "The candidate's target roles prioritize Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering, but the job description is for a Software Engineer Intern, which is the lowest priority role for the candidate. Additionally, the job is onsite-only in Carmel, IN, which does not align with the candidate's strong preference for remote work during non-summer terms. The candidate's skills in software engineering are present, but the overall role and location do not strongly align with their preferences.",
+      "source": "handshake",
+      "would_apply": null
+    }
+  ],
+  "retrieval_queries": [
+    {
+      "query": "remote data engineering internship Python pipeline",
+      "expected_ids": [
+        "3f2c6b6b07f7",
+        "2daa1b105a45",
+        "25dfb8991bed",
+        "010a2eb567f7",
+        "91a012cd7e1a"
+      ],
+      "notes": "Remote DE roles: Sayari, Rocket Lawyer, Intelcom, Wrench.AI, Super"
+    },
+    {
+      "query": "TikTok data engineer intern",
+      "expected_ids": [
+        "3bfcea47edd7",
+        "1e88093472f7",
+        "bed628946255",
+        "d8da50782628"
+      ],
+      "notes": "All 4 TikTok data engineering positions"
+    },
+    {
+      "query": "machine learning engineer internship",
+      "expected_ids": [
+        "0631a249beab",
+        "2cd12a0c3dd6",
+        "b6107ebf598d",
+        "3957dc684bb5",
+        "5c0261240aa0"
+      ],
+      "notes": "MLE intern roles: Cloudflare, PlusAI, Cresta, Avride, Neuralink"
+    },
+    {
+      "query": "data science co-op",
+      "expected_ids": [
+        "2d13a7e81813",
+        "6634fa8cf920",
+        "dd57de84b494"
+      ],
+      "notes": "DS co-op roles: LiveRamp, Flagship Pioneering, J&J"
+    },
+    {
+      "query": "data engineering intern energy utilities infrastructure",
+      "expected_ids": [
+        "598bca823f89",
+        "0dff13750be2",
+        "280703fb2ee3"
+      ],
+      "notes": "Energy/utilities DE: EnergyHub, PJM Interconnection, Sundt"
+    },
+    {
+      "query": "AI machine learning intern startup",
+      "expected_ids": [
+        "13a5dd95aae5",
+        "010a2eb567f7",
+        "2daa1b105a45",
+        "dd525cb6a7ba"
+      ],
+      "notes": "AI/ML at startups: Centerstream, Wrench.AI, Rocket Lawyer, Skydio"
+    },
+    {
+      "query": "data engineer co-op hybrid",
+      "expected_ids": [
+        "0dff13750be2",
+        "66760d88635c",
+        "947ff9226486"
+      ],
+      "notes": "Hybrid/co-op DE roles: PJM, Manulife, APEX Analytix"
+    },
+    {
+      "query": "machine learning co-op or internship",
+      "expected_ids": [
+        "eef25535c424",
+        "f96ef463048a",
+        "908c83f00331"
+      ],
+      "notes": "ML co-op/intern: Flagship Pioneering, Marvell, EarnIn"
+    },
+    {
+      "query": "data science intern technology product company",
+      "expected_ids": [
+        "5fb6766df765",
+        "024e8a3dfdd2",
+        "f4edbcf4bb39",
+        "ff353da80cdb"
+      ],
+      "notes": "DS intern at tech/product cos: Airbnb, Tencent, Visier, SCAN"
+    },
+    {
+      "query": "data engineering intern fintech finance",
+      "expected_ids": [
+        "765e5ce074bb",
+        "ccd553ed52c2",
+        "3a3cf959bf44",
+        "2d13a7e81813"
+      ],
+      "notes": "Finance/fintech DE: Octaura, Charles Schwab, Ardian, LiveRamp"
+    }
+  ]
+}

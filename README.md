@@ -233,6 +233,32 @@ curl -X POST https://internship-finder-h6sq.onrender.com/ask \
 }
 ```
 
+**`GET /eval`** — run the offline eval harness against `data_folder/eval_labels.json`
+
+```bash
+curl https://internship-finder-h6sq.onrender.com/eval
+```
+
+```json
+{
+  "fit_scores": {
+    "n_labeled": 30,
+    "threshold": 7,
+    "precision": 0.87,
+    "recall": 0.81,
+    "f1": 0.84,
+    "accuracy": 0.83
+  },
+  "retrieval": {
+    "k": 5,
+    "n_queries": 10,
+    "mean_recall": 0.92
+  }
+}
+```
+
+---
+
 ### Deploy to Render
 
 1. Push this repo to GitHub
@@ -248,6 +274,54 @@ To run locally with Docker:
 docker build -t internship-fit-scorer .
 docker run -e GROQ_API_KEY=gsk_... -p 8000:8000 internship-fit-scorer
 ```
+
+---
+
+## Evaluation
+
+`data_folder/eval_labels.json` is a hand-labeled ground-truth set used to measure how well the scoring pipeline actually performs.
+
+### Label the dataset (30 min)
+
+Open `data_folder/eval_labels.json` and set `"would_apply"` to `true` or `false` for each job. The file is pre-populated with all 97 jobs from past runs, sorted by fit score descending. Focus on the 49 jobs with `fit_score >= 7` first — those are the ones the system flagged as matches.
+
+### Run the eval
+
+```bash
+python scripts/eval.py
+```
+
+Output:
+
+```
+==========================================================
+  FIT-SCORE EVAL
+==========================================================
+  Labeled jobs    : 30  (threshold: 7)
+  TP / FP / FN / TN: 23 / 3 / 6 / 1
+
+  Precision  [########--]  0.870
+  Recall     [########--]  0.810
+  F1         [########--]  0.840
+  Accuracy   [########--]  0.830
+
+  False negatives (you'd apply but score < 7): ...
+  False positives (score >= 7 but wouldn't apply): ...
+
+==========================================================
+  RETRIEVAL EVAL  (recall@5)
+==========================================================
+  Queries tested  : 10
+  Mean recall@5  : 0.920  [#########-]
+
+  [##########]  1.00  TikTok data engineer intern
+  [########--]  0.75  remote data engineering internship Python ...
+  ...
+```
+
+Flags: `--fit-only`, `--retrieval-only`, `--k 3`, `--json`.
+
+The same metrics are also available via `GET /eval` on the deployed API.
 
 ---
 

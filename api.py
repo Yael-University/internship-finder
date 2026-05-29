@@ -306,3 +306,73 @@ def ask(req: AskRequest, x_api_key: Optional[str] = Header(default=None)):
     ]
 
     return AskResponse(answer=answer, sources=sources, total_stored=total)
+
+
+@app.get("/eval", response_model=EvalResponse)
+def eval_pipeline(x_api_key: Optional[str] = Header(default=None)):
+    """
+    Run the offline eval harness against data_folder/eval_labels.json.
+
+    Fit-score eval requires at least one labeled job (would_apply set to true/false).
+    Retrieval eval requires the embedding model to be loaded.
+    """
+    _check_auth(x_api_key)
+
+    labels_path = Path("data_folder/eval_labels.json")
+    if not labels_path.exists():
+        raise HTTPException(status_code=404, detail="data_folder/eval_labels.json not found")
+
+    with open(labels_path) as f:
+        labels = json.load(f)
+
+    # ── fit-score eval (no model needed) ────────────────────────────────────
+    from scripts.eval import eval_fit_scores
+    fit_results = eval_fit_scores(labels)
+
+    # ── retrieval eval (needs embedding model + chromadb) ───────────────────
+    if not (_ats_scorer and _ats_scorer._ml_ready):
+        retrieval_results = {"error": "Embedding model not loaded — retrieval eval skipped."}
+    else:
+        import chromadb
+        from scripts.eval import _build_ephemeral_store
+
+        all_jobs = labels.get("jobs", [])
+        queries  = labels.get("retrieval_queries", [])
+        k        = 5
+
+        if not all_jobs or not queries:
+            retrieval_results = {"error": "No jobs or retrieval queries in eval_labels.json."}
+        else:
+            col = _build_ephemeral_store(all_jobs, _ats_scorer._sem_model)
+
+            results_per_query = []
+            total_recall = 0.0
+            for q in queries:
+                expected = set(q["expected_ids"])
+                qvec = _ats_scorer._sem_model.encode(
+                    q["query"], convert_to_tensor=False
+                ).tolist()
+                hits = col.query(
+                    query_embeddings=[qvec],
+                    n_results=min(k, col.count()),
+                    include=["metadatas"],
+                )
+                returned_ids  = set(hits["ids"][0])
+                hits_in_top_k = expected & returned_ids
+                recall_at_k   = len(hits_in_top_k) / len(expected) if expected else 0.0
+                total_recall  += recall_at_k
+                results_per_query.append({
+                    "query":       q["query"],
+                    "expected":    len(expected),
+                    "hits_at_k":   len(hits_in_top_k),
+                    "recall_at_k": round(recall_at_k, 3),
+                })
+
+            retrieval_results = {
+                "k":           k,
+                "n_queries":   len(queries),
+                "mean_recall": round(total_recall / len(queries), 3),
+                "per_query":   results_per_query,
+            }
+
+    return EvalResponse(fit_scores=fit_results, retrieval=retrieval_results)
