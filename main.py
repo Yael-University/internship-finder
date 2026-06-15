@@ -18,6 +18,7 @@ from src.utils.constants import (
 from src.job_searcher import JobSearchManager
 from src.job_fit_scorer import JobFitScorer
 from src.ats_scorer import ATSScorer
+from src.preferences import build_system_prompt, get_profile, role_priority
 
 DEFAULT_FIXTURES = Path("data_folder") / "fixtures" / "sample_jobs.json"
 
@@ -318,24 +319,14 @@ def _cache_set(cache: dict, link: str, result: dict) -> None:
     cache[link] = {"cached_at": datetime.now().isoformat(), "result": result}
 
 
-_ROLE_PRIORITY_PATTERNS = [
-    ("data engineer", 0),
-    ("data engineering", 0),
-    ("data scientist", 1),
-    ("data science", 1),
-    ("machine learning", 2),
-    ("ml engineer", 2),
-    ("software engineer", 3),
-    ("software engineering", 3),
-]
+def _role_priority(role: str, profile: dict | None = None) -> int:
+    """Priority index for a role title, sourced from the candidate profile.
 
-
-def _role_priority(role: str) -> int:
-    r = role.lower()
-    for pattern, pri in _ROLE_PRIORITY_PATTERNS:
-        if pattern in r:
-            return pri
-    return 99
+    Defaults to the built-in profile when none is supplied; ``score_jobs`` passes
+    the profile derived from work_preferences.yaml so ranking and the fit-scorer
+    prompt stay in sync.
+    """
+    return role_priority(role, profile)
 
 
 def _cleanup_old_outputs(output_dir: Path, keep: int = 10):
@@ -414,7 +405,8 @@ def score_jobs(all_jobs: list[Job], config: dict, secrets: dict, resume_yaml_tex
     output_dir: Path = config["outputFileDirectory"]
     datestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
 
-    all_jobs.sort(key=lambda j: _role_priority(j.role))
+    profile = get_profile(config)
+    all_jobs.sort(key=lambda j: _role_priority(j.role, profile))
 
     max_to_score = config.get("max_jobs_to_score", 0)
     if max_to_score and len(all_jobs) > max_to_score:
@@ -432,7 +424,10 @@ def score_jobs(all_jobs: list[Job], config: dict, secrets: dict, resume_yaml_tex
         return
 
     # ── 2. Fit score every job with Groq/Llama ────────────────────────
-    fit_scorer = JobFitScorer(groq_api_key=groq_key)
+    fit_scorer = JobFitScorer(
+        groq_api_key=groq_key,
+        system_prompt=build_system_prompt(profile),
+    )
     ats_scorer = ATSScorer(resume_text=resume_yaml_text)
     matched: list[dict] = []
     skipped: list[dict] = []
