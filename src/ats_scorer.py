@@ -42,6 +42,14 @@ _ML_AVAILABLE = _ST_AVAILABLE and _HF_AVAILABLE
 _SKILL_MODEL_ID    = "jjzha/jobbert_skill_extraction"
 _SEMANTIC_MODEL_ID = "all-MiniLM-L6-v2"
 
+# ── Tunable scoring parameters ─────────────────────────────────────────────────
+_SKILL_CONFIDENCE_CUTOFF = 0.80   # min jobbert NER confidence to accept a SKILL entity
+_KEYWORD_WEIGHT          = 0.6    # weight of keyword coverage in the combined ATS score
+_SEMANTIC_WEIGHT         = 0.4    # weight of semantic similarity in the combined ATS score
+_JOBBERT_CHAR_LIMIT      = 1400   # max chars of JD fed to jobbert (model context limit)
+_JD_ANALYSIS_CHAR_LIMIT  = 5000   # max chars of JD used for keyword + semantic analysis
+_MAX_KEYWORDS            = 30     # cap on keywords extracted per job description
+
 # ── Stop words ─────────────────────────────────────────────────────────────────
 _STOP_WORDS = {
     "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
@@ -266,13 +274,13 @@ class ATSScorer:
 
     def _extract_skills_jobbert(self, text: str) -> list[str]:
         try:
-            entities = self._skill_pipe(text[:1400])
+            entities = self._skill_pipe(text[:_JOBBERT_CHAR_LIMIT])
             skills = []
             for ent in entities:
                 # Only SKILL entities (not EXPERIENCE) above confidence threshold
                 if ent.get("entity_group") != "SKILL":
                     continue
-                if ent.get("score", 0) < 0.80:
+                if ent.get("score", 0) < _SKILL_CONFIDENCE_CUTOFF:
                     continue
                 word = ent.get("word", "").strip()
                 word = re.sub(r"\s*##\s*", "", word).strip(".,;:!?\"'()- ")
@@ -305,7 +313,7 @@ class ATSScorer:
             if kw not in merged:
                 merged.append(kw)
 
-        return merged[:30]
+        return merged[:_MAX_KEYWORDS]
 
     # ── semantic similarity ───────────────────────────────────────────────────
 
@@ -342,7 +350,7 @@ class ATSScorer:
 
         try:
             resume_lower = resume_text.lower()
-            jd_text      = job.description[:5000]
+            jd_text      = job.description[:_JD_ANALYSIS_CHAR_LIMIT]
 
             # ── keyword layer ─────────────────────────────────────────────────
             keywords = self._build_keyword_list(jd_text)
@@ -370,7 +378,7 @@ class ATSScorer:
 
             # ── combined score ────────────────────────────────────────────────
             if self._ml_ready:
-                ats_score = round(0.6 * keyword_score + 0.4 * semantic_score)
+                ats_score = round(_KEYWORD_WEIGHT * keyword_score + _SEMANTIC_WEIGHT * semantic_score)
             else:
                 ats_score = keyword_score
 

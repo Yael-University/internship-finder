@@ -365,156 +365,153 @@ def search_and_score_jobs(config: dict, secrets: dict, resume_yaml_text: str):
 
     logger.info("Launching browsers for job search (LinkedIn, Handshake, Simplify)…")
 
-    try:
-        # ── 1. Scrape all sites in parallel ───────────────────────────────
-        manager  = JobSearchManager(config, secrets)
-        all_jobs = manager.search_all()
-        logger.info(f"Total jobs collected: {len(all_jobs)}")
+    # ── 1. Scrape all sites in parallel ───────────────────────────────
+    # Browsers are closed inside JobSearchManager._run_searcher.
+    manager  = JobSearchManager(config, secrets)
+    all_jobs = manager.search_all()
+    logger.info(f"Total jobs collected: {len(all_jobs)}")
 
-        all_jobs.sort(key=lambda j: _role_priority(j.role))
+    all_jobs.sort(key=lambda j: _role_priority(j.role))
 
-        max_to_score = config.get("max_jobs_to_score", 0)
-        if max_to_score and len(all_jobs) > max_to_score:
-            logger.info(
-                f"[Cap] {len(all_jobs)} jobs found; scoring only the first "
-                f"{max_to_score} (max_jobs_to_score in work_preferences.yaml)"
-            )
-            all_jobs = all_jobs[:max_to_score]
+    max_to_score = config.get("max_jobs_to_score", 0)
+    if max_to_score and len(all_jobs) > max_to_score:
+        logger.info(
+            f"[Cap] {len(all_jobs)} jobs found; scoring only the first "
+            f"{max_to_score} (max_jobs_to_score in work_preferences.yaml)"
+        )
+        all_jobs = all_jobs[:max_to_score]
 
-        if not all_jobs:
-            logger.warning(
-                "No jobs found. "
-                "Check your positions/locations in work_preferences.yaml."
-            )
-            return
+    if not all_jobs:
+        logger.warning(
+            "No jobs found. "
+            "Check your positions/locations in work_preferences.yaml."
+        )
+        return
 
-        # ── 2. Fit score every job with Groq/Llama ────────────────────────
-        fit_scorer = JobFitScorer(groq_api_key=groq_key)
-        ats_scorer = ATSScorer(resume_text=resume_yaml_text)
-        matched: list[dict] = []
-        skipped: list[dict] = []
+    # ── 2. Fit score every job with Groq/Llama ────────────────────────
+    fit_scorer = JobFitScorer(groq_api_key=groq_key)
+    ats_scorer = ATSScorer(resume_text=resume_yaml_text)
+    matched: list[dict] = []
+    skipped: list[dict] = []
 
-        score_cache = _load_score_cache(output_dir)
-        cache_hits  = 0
+    score_cache = _load_score_cache(output_dir)
+    cache_hits  = 0
 
-        print(f"\nAnalyzing {len(all_jobs)} jobs…\n")
-        for i, job in enumerate(all_jobs, 1):
-            print(
-                f"  [{i:>2}/{len(all_jobs)}] {job.role} @ {job.company} "
-                f"({job.apply_method})",
-                end="  ", flush=True,
-            )
+    print(f"\nAnalyzing {len(all_jobs)} jobs…\n")
+    for i, job in enumerate(all_jobs, 1):
+        print(
+            f"  [{i:>2}/{len(all_jobs)}] {job.role} @ {job.company} "
+            f"({job.apply_method})",
+            end="  ", flush=True,
+        )
 
-            if len(job.description) < 150:
-                print("skipped [no description]")
-                skipped.append({
-                    "role":      job.role,
-                    "company":   job.company,
-                    "location":  job.location,
-                    "source":    job.apply_method,
-                    "link":      job.link,
-                    "fit_score": 0,
-                    "reasoning": "No usable description scraped.",
-                })
-                continue
-
-            cached_fit = _cache_get(score_cache, job.link) if job.link else None
-            if cached_fit:
-                fit       = cached_fit
-                cache_tag = " [cached]"
-                cache_hits += 1
-            else:
-                try:
-                    fit = fit_scorer.score(resume_yaml_text, job)
-                except Exception as e:
-                    if "tokens per day" in str(e).lower() or "tpd" in str(e).lower():
-                        print(f"\n[Scorer] Daily token quota exhausted after {i-1} jobs scored. "
-                              f"Rerun tomorrow or reduce max_jobs_to_score.")
-                        break
-                    raise
-                if job.link:
-                    _cache_set(score_cache, job.link, fit)
-                cache_tag = ""
-
-            entry = {
+        if len(job.description) < 150:
+            print("skipped [no description]")
+            skipped.append({
                 "role":      job.role,
                 "company":   job.company,
                 "location":  job.location,
                 "source":    job.apply_method,
                 "link":      job.link,
-                "fit_score": fit["score"],
-                "reasoning": fit["reasoning"],
-            }
+                "fit_score": 0,
+                "reasoning": "No usable description scraped.",
+            })
+            continue
 
-            if fit["is_match"]:
-                # ── 3. ATS analysis only on jobs that pass fit threshold ──
-                ats = ats_scorer.analyze(resume_yaml_text, job)
-                entry.update({
-                    "ats_score":        ats["ats_score"],
-                    "keyword_score":    ats["keyword_score"],
-                    "semantic_score":   ats["semantic_score"],
-                    "matched_keywords": ats["matched_keywords"],
-                    "missing_keywords": ats["missing_keywords"],
-                    "critical_missing": ats["critical_missing"],
-                    "ats_tip":          ats["tip"],
-                })
-                matched.append(entry)
-                print(
-                    f"Fit {fit['score']}/10 ✓{cache_tag}  |  "
-                    f"ATS {ats['ats_score']}%  "
-                    f"(kw {ats['keyword_score']}% · sem {ats['semantic_score']}%)"
-                )
-            else:
-                skipped.append(entry)
-                print(f"Fit {fit['score']}/10 ✗{cache_tag}")
+        cached_fit = _cache_get(score_cache, job.link) if job.link else None
+        if cached_fit:
+            fit       = cached_fit
+            cache_tag = " [cached]"
+            cache_hits += 1
+        else:
+            try:
+                fit = fit_scorer.score(resume_yaml_text, job)
+            except Exception as e:
+                if "tokens per day" in str(e).lower() or "tpd" in str(e).lower():
+                    print(f"\n[Scorer] Daily token quota exhausted after {i-1} jobs scored. "
+                          f"Rerun tomorrow or reduce max_jobs_to_score.")
+                    break
+                raise
+            if job.link:
+                _cache_set(score_cache, job.link, fit)
+            cache_tag = ""
 
-        _save_score_cache(output_dir, score_cache)
-        if cache_hits:
+        entry = {
+            "role":      job.role,
+            "company":   job.company,
+            "location":  job.location,
+            "source":    job.apply_method,
+            "link":      job.link,
+            "fit_score": fit["score"],
+            "reasoning": fit["reasoning"],
+        }
+
+        if fit["is_match"]:
+            # ── 3. ATS analysis only on jobs that pass fit threshold ──
+            ats = ats_scorer.analyze(resume_yaml_text, job)
+            entry.update({
+                "ats_score":        ats["ats_score"],
+                "keyword_score":    ats["keyword_score"],
+                "semantic_score":   ats["semantic_score"],
+                "matched_keywords": ats["matched_keywords"],
+                "missing_keywords": ats["missing_keywords"],
+                "critical_missing": ats["critical_missing"],
+                "ats_tip":          ats["tip"],
+            })
+            matched.append(entry)
             print(
-                f"  [Cache] {cache_hits}/{len(all_jobs)} jobs loaded from cache "
-                f"(saved ~{cache_hits * 2500:,} Groq tokens)"
+                f"Fit {fit['score']}/10 ✓{cache_tag}  |  "
+                f"ATS {ats['ats_score']}%  "
+                f"(kw {ats['keyword_score']}% · sem {ats['semantic_score']}%)"
             )
+        else:
+            skipped.append(entry)
+            print(f"Fit {fit['score']}/10 ✗{cache_tag}")
 
-        # ── 4. Write Markdown report ──────────────────────────────────────
-        md_path = output_dir / f"job_matches_{datestamp}.md"
-        resume_pdf = secrets.get("resume_pdf_path", "")
-        _write_markdown_report(
-            md_path, matched, skipped, len(all_jobs), fit_scorer.threshold,
-            resume_pdf_path=resume_pdf,
+    _save_score_cache(output_dir, score_cache)
+    if cache_hits:
+        print(
+            f"  [Cache] {cache_hits}/{len(all_jobs)} jobs loaded from cache "
+            f"(saved ~{cache_hits * 2500:,} Groq tokens)"
         )
 
-        # ── 5. Write JSON archive ─────────────────────────────────────────
-        json_path = output_dir / f"job_matches_{datestamp}.json"
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(
-                {
-                    "generated_at":   datestamp,
-                    "total_searched": len(all_jobs),
-                    "total_matched":  len(matched),
-                    "matched":        matched,
-                    "skipped":        skipped,
-                },
-                f, ensure_ascii=False, indent=2,
-            )
+    # ── 4. Write Markdown report ──────────────────────────────────────
+    md_path = output_dir / f"job_matches_{datestamp}.md"
+    resume_pdf = secrets.get("resume_pdf_path", "")
+    _write_markdown_report(
+        md_path, matched, skipped, len(all_jobs), fit_scorer.threshold,
+        resume_pdf_path=resume_pdf,
+    )
 
-        # ── 6. Prune old output files (keep latest 10) ───────────────────
-        _cleanup_old_outputs(output_dir, keep=10)
+    # ── 5. Write JSON archive ─────────────────────────────────────────
+    json_path = output_dir / f"job_matches_{datestamp}.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "generated_at":   datestamp,
+                "total_searched": len(all_jobs),
+                "total_matched":  len(matched),
+                "matched":        matched,
+                "skipped":        skipped,
+            },
+            f, ensure_ascii=False, indent=2,
+        )
 
-        # ── 7. Auto-open report on macOS ──────────────────────────────────
-        try:
-            subprocess.run(["open", str(md_path)], check=False)
-        except Exception:
-            pass
+    # ── 6. Prune old output files (keep latest 10) ───────────────────
+    _cleanup_old_outputs(output_dir, keep=10)
 
-        print(f"\n{'─' * 62}")
-        print(f"  Searched : {len(all_jobs)} jobs")
-        print(f"  Matched  : {len(matched)} jobs  (fit ≥ {fit_scorer.threshold}/10)")
-        print(f"  Report   : {md_path}")
-        print(f"  Archive  : {json_path}")
-        print(f"{'─' * 62}\n")
+    # ── 7. Auto-open report on macOS ──────────────────────────────────
+    try:
+        subprocess.run(["open", str(md_path)], check=False)
+    except Exception:
+        pass
 
-    finally:
-        pass  # browsers are closed inside JobSearchManager._run_searcher
+    print(f"\n{'─' * 62}")
+    print(f"  Searched : {len(all_jobs)} jobs")
+    print(f"  Matched  : {len(matched)} jobs  (fit ≥ {fit_scorer.threshold}/10)")
+    print(f"  Report   : {md_path}")
+    print(f"  Archive  : {json_path}")
+    print(f"{'─' * 62}\n")
 
 
 def _write_markdown_report(

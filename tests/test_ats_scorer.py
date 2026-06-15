@@ -10,7 +10,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 import pytest
-from src.ats_scorer import ATSScorer, _keyword_present, _extract_keywords, _ALWAYS_EXTRACT
+from src.ats_scorer import ATSScorer, _keyword_present, _extract_keywords_static, _ALWAYS_EXTRACT
 from src.job import Job
 
 
@@ -65,31 +65,31 @@ class TestKeywordPresent:
         assert _keyword_present("node", "nodejs backend") is True
 
 
-# ── _extract_keywords ─────────────────────────────────────────────────────────
+# ── _extract_keywords_static ────────────────────────────────────────────────────
 
 class TestExtractKeywords:
     def test_empty_text_returns_empty(self):
-        assert _extract_keywords("") == []
+        assert _extract_keywords_static("") == []
 
     def test_tech_single_word_extracted(self):
-        kws = _extract_keywords("strong python and sql skills required")
+        kws = _extract_keywords_static("strong python and sql skills required")
         assert "python" in kws
         assert "sql" in kws
 
     def test_bigram_tech_term_extracted(self):
-        kws = _extract_keywords("experience with machine learning and deep learning")
+        kws = _extract_keywords_static("experience with machine learning and deep learning")
         assert "machine learning" in kws
 
     def test_bigram_before_single_word(self):
         text = "machine learning engineer with python skills"
-        kws = _extract_keywords(text)
+        kws = _extract_keywords_static(text)
         ml_pos = kws.index("machine learning") if "machine learning" in kws else 999
         py_pos = kws.index("python") if "python" in kws else 999
         # multi-word terms should appear earlier in the list
         assert ml_pos < py_pos
 
     def test_stop_words_excluded(self):
-        kws = _extract_keywords("the and or but with for from is are")
+        kws = _extract_keywords_static("the and or but with for from is are")
         assert kws == []
 
     def test_top_n_limit(self):
@@ -97,7 +97,7 @@ class TestExtractKeywords:
                          "react", "angular", "redis", "kafka", "spark", "tensorflow",
                          "pytorch", "golang", "rust", "scala", "mongodb", "postgres",
                          "elasticsearch", "airflow", "terraform", "jenkins"])
-        kws = _extract_keywords(text, top_n=10)
+        kws = _extract_keywords_static(text, top_n=10)
         assert len(kws) <= 10
 
 
@@ -113,7 +113,7 @@ class TestATSScorer:
         assert result["missing_keywords"] == []
 
     def test_perfect_match_scores_100(self):
-        # Use only tech terms so _extract_keywords picks up nothing extra
+        # Use only tech terms so _extract_keywords_static picks up nothing extra
         jd = "python sql aws"
         resume = "python sql aws"
         result = self.scorer.analyze(resume, _make_job(jd))

@@ -21,6 +21,10 @@ _RETRY_EXCEPTIONS = ("rate_limit", "RateLimitError", "429", "too many requests")
 
 _MODEL = "llama-3.3-70b-versatile"   # best free model on Groq
 
+# Job-description slicing for the scoring prompt
+_JD_CHAR_LIMIT = 2000   # max chars of JD sent to the LLM
+_JD_INTRO_CHARS = 300   # leading context kept before the requirements section
+
 _REQ_HEADERS = (
     "requirements", "qualifications", "what you'll need", "what we're looking for",
     "what you need", "minimum qualifications", "basic qualifications",
@@ -29,7 +33,7 @@ _REQ_HEADERS = (
 )
 
 
-def _extract_jd_for_scoring(desc: str, char_limit: int = 2000) -> str:
+def _extract_jd_for_scoring(desc: str, char_limit: int = _JD_CHAR_LIMIT) -> str:
     """
     Prioritize the requirements section of a job description over the company
     intro. Most postings bury technical requirements after ~1000 chars of preamble,
@@ -45,8 +49,8 @@ def _extract_jd_for_scoring(desc: str, char_limit: int = 2000) -> str:
             earliest = pos
 
     if earliest < len(desc) - 100:
-        intro = desc[:300]
-        reqs  = desc[earliest:earliest + (char_limit - 300)]
+        intro = desc[:_JD_INTRO_CHARS]
+        reqs  = desc[earliest:earliest + (char_limit - _JD_INTRO_CHARS)]
         return (intro + "\n\n" + reqs)[:char_limit]
     return desc[:char_limit]
 
@@ -79,6 +83,31 @@ class JobFitScorer:
     def __init__(self, groq_api_key: str):
         self._client = Groq(api_key=groq_api_key)
         self.threshold: int = cfg.JOB_SUITABILITY_SCORE
+
+    def chat(
+        self,
+        system: str,
+        user: str,
+        *,
+        model: str = _MODEL,
+        temperature: float = 0.3,
+        max_tokens: int = 400,
+    ) -> str:
+        """
+        Single-turn chat completion against Groq. Exposes the underlying client
+        so callers (e.g. the RAG /ask endpoint) don't reach into private state.
+        Returns the assistant message content (empty string if none).
+        """
+        response = self._client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user",   "content": user},
+            ],
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return response.choices[0].message.content or ""
 
     def score(self, resume_yaml: str, job: Job) -> dict:
         """

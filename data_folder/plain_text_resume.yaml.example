@@ -1,0 +1,61 @@
+# Copy this file to plain_text_resume.yaml and fill in your details.
+#
+# Both the Groq fit scorer and the ATS analyzer read from this file. Only the
+# sections below are used for scoring — main.py's _compress_resume() reads
+# personal_information, education_details, experience_details, projects,
+# achievements, certifications, and languages. Other sections are ignored.
+
+personal_information:
+  name: 'Jane'
+  surname: 'Doe'
+  city: 'Boston, MA'
+  linkedin: 'https://www.linkedin.com/in/janedoe'
+
+education_details:
+  - education_level: 'Master of Science'
+    field_of_study: 'Data Science'
+    institution: 'Northeastern University'
+    start_date: '2026'
+    year_of_completion: '2028'
+    final_evaluation_grade: '3.9/4.0'
+  - education_level: 'Bachelor of Science'
+    field_of_study: 'Computer Science'
+    institution: 'State University'
+    start_date: '2021'
+    year_of_completion: '2025'
+    final_evaluation_grade: '3.7/4.0'
+
+experience_details:
+  - position: 'Data Engineering Intern'
+    company: 'Acme Corp'
+    employment_period: 'Jun 2025 – Aug 2025'
+    location: 'Remote'
+    industry: 'Technology'
+    key_responsibilities:
+      - 'Built and orchestrated ETL pipelines in Apache Airflow processing 10M+ daily records.'
+      - 'Modeled a dimensional data warehouse in Snowflake and wrote dbt transformations.'
+      - 'Wrote Python and SQL to validate data quality and reduce pipeline failures by 30%.'
+    skills_acquired:
+      - 'Python'
+      - 'SQL'
+      - 'Apache Airflow'
+      - 'dbt'
+      - 'Snowflake'
+
+projects:
+  - name: 'Internship Finder'
+    description: 'LLM-powered pipeline that scrapes job boards and scores fit with Groq + sentence-transformers.'
+    link: 'https://github.com/yourname/internship-finder'
+
+achievements:
+  - name: "Dean's List"
+    description: 'Awarded for academic excellence across all semesters.'
+
+certifications:
+  - 'AWS Certified Cloud Practitioner'
+
+languages:
+  - language: 'English'
+    proficiency: 'Native'
+  - language: 'Spanish'
+    proficiency: 'Professional'

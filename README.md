@@ -64,7 +64,7 @@ Quick ATS fix: Add "express" to your resume — likely ATS filter keyword.
 ### Install
 
 ```bash
-git clone https://github.com/yaelmendez/internship-finder
+git clone https://github.com/Yael-University/internship-finder
 cd internship-finder
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
@@ -73,6 +73,13 @@ pip install -r requirements.txt
 The ATS ML models (`jobbert` + `all-MiniLM-L6-v2`) download automatically on first run (~500 MB total). If they fail to load, the scorer falls back to static keyword matching with no interruption.
 
 ### Configure
+
+Copy the two `.example` templates and fill them in:
+
+```bash
+cp data_folder/secrets.yaml.example          data_folder/secrets.yaml
+cp data_folder/plain_text_resume.yaml.example data_folder/plain_text_resume.yaml
+```
 
 **`data_folder/secrets.yaml`** — API keys and site credentials:
 ```yaml
@@ -83,24 +90,51 @@ handshake_email: "you@example.com"
 handshake_password: "..."
 ```
 
-**`data_folder/work_preferences.yaml`** — what to search for:
+**`data_folder/work_preferences.yaml`** — what to search for. All keys below are
+required (`ConfigValidator` rejects the file if any are missing). The repo ships a
+complete, ready-to-edit copy; the full shape is:
 ```yaml
 remote: true
+hybrid: true
+onsite: true
 experience_level:
   internship: true
   entry: true
+  associate: false
+  mid_senior_level: false
+  director: false
+  executive: false
+job_types:
+  full_time: true
+  contract: false
+  part_time: false
+  temporary: true
+  internship: true
+  other: false
+  volunteer: false
+date:
+  all_time: false
+  month: true        # posted within the last month
+  week: false
+  24_hours: false
 positions:
   - Data Engineer Intern
   - Machine Learning Engineer Intern
   - Software Engineer Intern
 locations:
   - "United States"
-date:
-  month: true        # posted within the last month
+  - "Remote"
+distance: 100        # one of: 0, 5, 10, 25, 50, 100
+company_blacklist: []
+title_blacklist:
+  - Senior
+  - Staff
+location_blacklist: []
 max_jobs_to_score: 50
 ```
 
-**`data_folder/plain_text_resume.yaml`** — your resume in plain text (YAML format). The LLM scorer and ATS analyzer both read from this file.
+**`data_folder/plain_text_resume.yaml`** — your resume in plain text (YAML format),
+copied from `plain_text_resume.yaml.example`. The LLM scorer and ATS analyzer both read from this file.
 
 ### Run
 
@@ -291,7 +325,7 @@ Open `data_folder/eval_labels.json` and set `"would_apply"` to `true` or `false`
 python scripts/eval.py
 ```
 
-Output:
+Output (illustrative — your numbers depend on how you label the data):
 
 ```
 ==========================================================
