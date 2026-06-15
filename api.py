@@ -274,26 +274,15 @@ def ask(req: AskRequest, x_api_key: Optional[str] = Header(default=None)):
     context = "\n\n---\n\n".join(context_parts)
 
     # Generate
-    response = _fit_scorer._client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "You are a helpful assistant answering questions about job listings. "
-                    "Answer using only the provided listings. Be concise and specific."
-                ),
-            },
-            {
-                "role": "user",
-                "content": f"Job listings:\n\n{context}\n\nQuestion: {req.question}",
-            },
-        ],
+    answer = _fit_scorer.chat(
+        system=(
+            "You are a helpful assistant answering questions about job listings. "
+            "Answer using only the provided listings. Be concise and specific."
+        ),
+        user=f"Job listings:\n\n{context}\n\nQuestion: {req.question}",
         temperature=0.3,
         max_tokens=400,
     )
-
-    answer = response.choices[0].message.content or ""
 
     sources = [
         {

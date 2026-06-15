@@ -95,13 +95,8 @@ class BaseJobSearcher(ABC):
         if self.date_filter.get("month"):    return "r2592000"
         return ""
 
-    def _date_param_handshake(self) -> str:
-        if self.date_filter.get("24_hours"): return "&date_posted=today"
-        if self.date_filter.get("week"):     return "&date_posted=this_week"
-        if self.date_filter.get("month"):    return "&date_posted=this_month"
-        return ""
-
-    def _date_param_simplify(self) -> str:
+    def _date_param(self) -> str:
+        """Shared date-posted query param for Handshake and Simplify (same schema)."""
         if self.date_filter.get("24_hours"): return "&date_posted=today"
         if self.date_filter.get("week"):     return "&date_posted=this_week"
         if self.date_filter.get("month"):    return "&date_posted=this_month"
@@ -920,7 +915,7 @@ class SimplifyJobSearcher(BaseJobSearcher):
                     f"search={quote_plus(position)}"
                     f"&location={quote_plus(location)}"
                     f"&sort=date"
-                    f"{self._date_param_simplify()}"
+                    f"{self._date_param()}"
                 )
                 self.driver.get(f"{self.BASE_URL}?{p}")
                 self._delay(6, 9)

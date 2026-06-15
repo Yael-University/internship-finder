@@ -14,7 +14,6 @@ transformers>=4.40.0
 
 # Config / CLI
 PyYAML~=6.0.2
-inquirer
 loguru>=0.7.2
 pydantic
 
