@@ -11,8 +11,11 @@ Endpoints:
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import os
+import threading
+from collections import OrderedDict
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional
@@ -81,6 +84,40 @@ def _embed(text: str) -> list[float]:
     if _ats_scorer and _ats_scorer._sem_model is not None:
         return _ats_scorer._sem_model.encode(text, convert_to_tensor=False).tolist()
     return []
+
+
+# ── /score result cache ────────────────────────────────────────────────────
+# Fit scoring is the slow, paid step (a Groq call per request). Identical
+# (resume, job_description) pairs are common — re-runs, dashboards polling, the
+# same JD scored against the same resume — so cache the fit + ATS result in a
+# small bounded LRU keyed on content hashes. Process-local and cleared on
+# restart; the vector-store upsert still runs on every call.
+_SCORE_CACHE_MAXSIZE = 256
+_score_cache: "OrderedDict[tuple[str, str], dict]" = OrderedDict()
+_score_cache_lock = threading.Lock()
+
+
+def _score_cache_key(resume: str, job_description: str) -> tuple[str, str]:
+    return (
+        hashlib.sha256(resume.encode("utf-8")).hexdigest(),
+        hashlib.sha256(job_description.encode("utf-8")).hexdigest(),
+    )
+
+
+def _score_cache_get(key: tuple[str, str]) -> Optional[dict]:
+    with _score_cache_lock:
+        if key in _score_cache:
+            _score_cache.move_to_end(key)
+            return _score_cache[key]
+    return None
+
+
+def _score_cache_set(key: tuple[str, str], value: dict) -> None:
+    with _score_cache_lock:
+        _score_cache[key] = value
+        _score_cache.move_to_end(key)
+        while len(_score_cache) > _SCORE_CACHE_MAXSIZE:
+            _score_cache.popitem(last=False)
 
 
 # ── Request / response models ─────────────────────────────────────────────────
@@ -176,8 +213,14 @@ def score(req: ScoreRequest, x_api_key: Optional[str] = Header(default=None)):
         apply_method="api",
     )
 
-    fit = _fit_scorer.score(resume_yaml=req.resume, job=job)
-    ats = _ats_scorer.analyze(resume_text=req.resume, job=job)
+    cache_key = _score_cache_key(req.resume, req.job_description)
+    cached = _score_cache_get(cache_key)
+    if cached is not None:
+        fit, ats = cached["fit"], cached["ats"]
+    else:
+        fit = _fit_scorer.score(resume_yaml=req.resume, job=job)
+        ats = _ats_scorer.analyze(resume_text=req.resume, job=job)
+        _score_cache_set(cache_key, {"fit": fit, "ats": ats})
 
     # Store in vector DB if embedding model is ready
     stored = False

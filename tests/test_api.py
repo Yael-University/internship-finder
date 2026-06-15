@@ -21,10 +21,12 @@ from fastapi.testclient import TestClient
 
 class FakeScorer:
     """Stand-in for JobFitScorer — no Groq client constructed."""
-    def __init__(self, groq_api_key: str = "test"):
+    def __init__(self, groq_api_key: str = "test", **kwargs):
         self.threshold = 7
+        self.score_calls = 0
 
     def score(self, resume_yaml: str, job) -> dict:
+        self.score_calls += 1
         return {"score": 8, "reasoning": "Strong overlap with data engineering.", "is_match": True}
 
     def chat(self, system: str, user: str, **kwargs) -> str:
@@ -99,6 +101,8 @@ def client(monkeypatch):
     monkeypatch.setattr(api, "_init_ats_scorer", lambda: FakeATS())
     # Auth is disabled unless API_KEY is set
     monkeypatch.setattr(api, "_API_KEY", "")
+    # The /score cache is process-global — reset it for test isolation.
+    api._score_cache.clear()
 
     with TestClient(api.app) as c:
         # The background loader runs asynchronously; set it deterministically so
@@ -141,6 +145,32 @@ def test_score_returns_fit_and_ats(client):
     assert body["ats_score"] == 72
     assert body["matched_keywords"] == ["python", "sql"]
     assert body["stored"] is True
+
+
+def test_score_caches_identical_requests(client):
+    import api
+    payload = {
+        "resume": "python sql data engineering",
+        "job_description": "We need a data engineer with python and sql.",
+        "role": "Data Engineer", "company": "Acme", "location": "Remote",
+    }
+    r1 = client.post("/score", json=payload)
+    r2 = client.post("/score", json=payload)
+    assert r1.status_code == r2.status_code == 200
+    assert r1.json()["fit_score"] == r2.json()["fit_score"]
+    # The fit scorer should only have run once; the second call is a cache hit.
+    assert api._fit_scorer.score_calls == 1
+
+
+def test_score_cache_misses_on_different_resume(client):
+    import api
+    base = {
+        "job_description": "Data engineer needed.",
+        "role": "DE", "company": "Acme", "location": "Remote",
+    }
+    client.post("/score", json={**base, "resume": "resume one"})
+    client.post("/score", json={**base, "resume": "resume two"})
+    assert api._fit_scorer.score_calls == 2
 
 
 def test_score_stores_job_in_vector_db(client):
