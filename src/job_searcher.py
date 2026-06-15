@@ -1131,6 +1131,7 @@ class JobSearchManager:
         ]
 
         raw: list[Job] = []
+        per_source: dict[str, int] = {label: 0 for label, *_ in tasks}
         with ThreadPoolExecutor(max_workers=len(tasks)) as pool:
             futures = {
                 pool.submit(self._run_searcher, label, factory, stealth, profile_dir, browser_init): label
@@ -1140,10 +1141,19 @@ class JobSearchManager:
                 label = futures[future]
                 try:
                     jobs = future.result()
+                    per_source[label] = len(jobs)
                     logger.info(f"[{label}] returned {len(jobs)} jobs")
+                    if not jobs:
+                        logger.warning(
+                            f"[{label}] returned 0 jobs — possible selector breakage, "
+                            "auth wall, or simply no matches"
+                        )
                     raw.extend(jobs)
                 except Exception as e:
                     logger.error(f"{label} future raised: {e}")
+
+        summary = ", ".join(f"{label}={per_source[label]}" for label, *_ in tasks)
+        logger.info(f"[Search] Per-source job counts — {summary}")
 
         return self._deduplicate(raw)
 

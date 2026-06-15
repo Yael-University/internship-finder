@@ -17,8 +17,24 @@ import os
 import chromadb
 
 
-def _job_id(company: str, role: str, description: str) -> str:
-    key = f"{company.lower()}|{role.lower()}|{description[:80]}"
+def _job_id(
+    company: str,
+    role: str,
+    description: str,
+    location: str = "",
+    link: str = "",
+) -> str:
+    """Stable identity for a job posting.
+
+    Two postings collapse to the same id only when company, role, location, and
+    the full description match (or when they share a link). Hashing the entire
+    description — rather than a short prefix — avoids merging distinct roles that
+    happen to start with the same boilerplate intro.
+    """
+    if link:
+        key = link.strip().lower()
+    else:
+        key = f"{company.lower()}|{role.lower()}|{location.lower()}|{description}"
     return hashlib.md5(key.encode()).hexdigest()
 
 
@@ -45,8 +61,9 @@ class JobStore:
         description: str,
         fit_score: int,
         embedding: list[float],
+        link: str = "",
     ) -> str:
-        job_id = _job_id(company, role, description)
+        job_id = _job_id(company, role, description, location=location, link=link)
         # Store a concise document for RAG context
         document = (
             f"Role: {role}\nCompany: {company}\nLocation: {location}\n\n"

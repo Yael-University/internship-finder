@@ -1,3 +1,25 @@
+# Candidate profile — drives the Groq fit-scoring prompt and result ranking.
+# Edit these to make the tool score for *you*. If this block is removed, the
+# built-in defaults (a Northeastern Data Science master's candidate) are used.
+candidate_profile:
+  summary: >-
+    a first-year master's student in Data Science at Northeastern University
+    (starting Fall 2026)
+  # Ordered best→worst. Each role's keywords are matched (case-insensitive
+  # substring) against scraped job titles for ranking.
+  role_priorities:
+    - name: Data Engineering
+      keywords: [data engineer, data engineering]
+    - name: Data Science
+      keywords: [data scientist, data science]
+    - name: Machine Learning Engineering
+      keywords: [machine learning, ml engineer]
+    - name: Software Engineering
+      keywords: [software engineer, software engineering]
+  location_preference:
+    - "Fall and spring internships/co-ops: REMOTE strongly preferred (onsite-only hurts the score)"
+    - "Summer internships: onsite or hybrid is fully acceptable"
+
 remote: true
 hybrid: true
 onsite: true

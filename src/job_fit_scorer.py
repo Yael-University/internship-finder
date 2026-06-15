@@ -16,6 +16,7 @@ from groq import Groq
 import config as cfg
 from src.job import Job
 from src.logging import logger
+from src.preferences import build_system_prompt
 
 _RETRY_EXCEPTIONS = ("rate_limit", "RateLimitError", "429", "too many requests")
 
@@ -54,35 +55,15 @@ def _extract_jd_for_scoring(desc: str, char_limit: int = _JD_CHAR_LIMIT) -> str:
         return (intro + "\n\n" + reqs)[:char_limit]
     return desc[:char_limit]
 
-_SYSTEM_PROMPT = """\
-You are an expert technical recruiter evaluating candidate fit for internship and co-op positions.
-
-The candidate is a first-year master's student in Data Science at Northeastern University (starting Fall 2026).
-Their target roles in priority order are:
-  PRIORITY 1 — Data Engineering
-  PRIORITY 2 — Data Science
-  PRIORITY 3 — Machine Learning Engineering
-  PRIORITY 4 — Software Engineering
-
-Location preferences by season:
-  - Fall and spring internships/co-ops: REMOTE strongly preferred (onsite-only hurts the score)
-  - Summer internships: onsite or hybrid is fully acceptable
-
-Score how well this candidate matches the job on a scale of 1–10:
-  1–3  Poor match — wrong role type, requires PhD or senior experience, or onsite-only for a non-summer term
-  4–6  Partial match — lower-priority role or notable skill gaps
-  7–8  Good match — high-priority role, meets most requirements
-  9–10 Excellent match — top-priority role targeting master's/graduate students, strong skill alignment
-
-Reply in EXACTLY this format with nothing else:
-Score: <integer>
-Reasoning: <2–3 sentences covering matching skills, role priority fit, and location/season alignment>"""
-
 
 class JobFitScorer:
-    def __init__(self, groq_api_key: str):
+    def __init__(self, groq_api_key: str, *, system_prompt: str | None = None):
         self._client = Groq(api_key=groq_api_key)
         self.threshold: int = cfg.JOB_SUITABILITY_SCORE
+        # When no prompt is supplied (e.g. the generic API path), fall back to the
+        # default candidate profile. main.py passes a prompt built from
+        # work_preferences.yaml so the tool is reusable by anyone.
+        self.system_prompt: str = system_prompt or build_system_prompt()
 
     def chat(
         self,
@@ -132,7 +113,7 @@ class JobFitScorer:
                 response = self._client.chat.completions.create(
                     model=_MODEL,
                     messages=[
-                        {"role": "system", "content": _SYSTEM_PROMPT},
+                        {"role": "system", "content": self.system_prompt},
                         {"role": "user",   "content": user_content},
                     ],
                     temperature=0.2,
