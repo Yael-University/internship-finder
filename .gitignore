@@ -1,5 +1,4 @@
 # application files and logs
-/generated_cv
 /log/*
 
 # Sensitive config — copy from *.example and fill in your values
@@ -43,9 +42,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-chrome_profile/*
 data_folder/output/*
-answers.json
 # PyInstaller
 # Usually these files are written by a python script from a template
 # before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -172,5 +169,3 @@ venv.bak/
 
 # Mono Auto Generated Files
 mono_crash.*
-
-job_applications/

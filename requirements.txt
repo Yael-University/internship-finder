@@ -2,10 +2,11 @@
 selenium
 webdriver-manager
 undetected-chromedriver
+selenium-stealth
+certifi
 
 # LLM fit scoring (Groq free tier)
-langchain-core
-langchain-groq
+groq
 
 # ATS scoring — ML models (download once, run locally)
 sentence-transformers>=3.0.0
