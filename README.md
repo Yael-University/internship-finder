@@ -144,6 +144,21 @@ python main.py
 
 The scraper opens browser windows, collects listings, then closes them. Scoring runs automatically. The terminal shows live progress; the final report path is printed when done.
 
+#### Dry-run (no scraping)
+
+To exercise the scoring/report pipeline against cached listings — useful for
+testing prompt or scoring changes without launching Selenium — use `--dry-run`:
+
+```bash
+python main.py --dry-run                       # uses data_folder/fixtures/sample_jobs.json
+python main.py --dry-run path/to/jobs.json     # or your own fixtures file
+```
+
+The fixtures file is a JSON list (or `{"jobs": [...]}`) of objects with
+`role`, `company`, `location`, `link`, `source`, and `description`. A live run
+still needs a Groq key; dry-run scores the cached jobs through the same fit +
+ATS pipeline.
+
 ---
 
 ## Architecture

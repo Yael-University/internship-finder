@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "role": "Data Engineer Intern",
+      "company": "Acme Analytics",
+      "location": "Remote (US)",
+      "source": "fixture",
+      "link": "https://example.com/jobs/data-engineer-intern",
+      "description": "We are hiring a Data Engineer Intern to help build and maintain our data pipelines. Responsibilities: design ETL workflows in Python, write SQL transformations, and orchestrate jobs with Airflow. Requirements: experience with Python and SQL, familiarity with cloud data warehouses (Snowflake or BigQuery), and an interest in distributed data processing with Spark. You will work with the platform team to ship reliable batch and streaming pipelines that power analytics across the company."
+    },
+    {
+      "role": "Data Scientist Intern",
+      "company": "Northwind Labs",
+      "location": "Boston, MA (Hybrid)",
+      "source": "fixture",
+      "link": "https://example.com/jobs/data-scientist-intern",
+      "description": "Northwind Labs is looking for a Data Scientist Intern to support our experimentation and modeling efforts. You will analyze large datasets, build predictive models with scikit-learn and PyTorch, run A/B tests, and communicate findings to stakeholders. Qualifications: coursework or projects in statistics and machine learning, strong Python skills, experience with pandas and NumPy, and clear written communication. Bonus: experience deploying models to production."
+    },
+    {
+      "role": "Machine Learning Engineer Intern",
+      "company": "Helios AI",
+      "location": "San Francisco, CA",
+      "source": "fixture",
+      "link": "https://example.com/jobs/ml-engineer-intern",
+      "description": "Join Helios AI as a Machine Learning Engineer Intern. You will help train, evaluate, and serve deep learning models. Responsibilities include building data loaders, fine-tuning transformer models, optimizing inference latency, and writing reproducible training pipelines. Requirements: Python, PyTorch or TensorFlow, understanding of neural networks, and comfort with Linux and Git. Familiarity with Docker and Kubernetes is a plus."
+    },
+    {
+      "role": "Software Engineer Intern",
+      "company": "Brightside Software",
+      "location": "Remote",
+      "source": "fixture",
+      "link": "https://example.com/jobs/software-engineer-intern",
+      "description": "Brightside Software seeks a Software Engineer Intern to contribute to our web platform. You will build REST APIs in Python (FastAPI), write tests, and collaborate on frontend features in React. Requirements: solid programming fundamentals, familiarity with at least one backend framework, and version control with Git. We value clean code, good tests, and a willingness to learn."
+    }
+  ]
+}

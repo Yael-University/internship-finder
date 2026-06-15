@@ -1,3 +1,4 @@
+import argparse
 import json
 import subprocess
 import traceback
@@ -8,6 +9,7 @@ import re
 
 import yaml
 from src.logging import logger
+from src.job import Job
 from src.utils.constants import (
     PLAIN_TEXT_RESUME_YAML,
     SECRETS_YAML,
@@ -16,6 +18,8 @@ from src.utils.constants import (
 from src.job_searcher import JobSearchManager
 from src.job_fit_scorer import JobFitScorer
 from src.ats_scorer import ATSScorer
+
+DEFAULT_FIXTURES = Path("data_folder") / "fixtures" / "sample_jobs.json"
 
 
 class ConfigError(Exception):
@@ -345,12 +349,59 @@ def _cleanup_old_outputs(output_dir: Path, keep: int = 10):
                 logger.warning(f"[Cleanup] Could not remove {f.name}: {e}")
 
 
+def load_jobs_from_fixtures(path: Path) -> list[Job]:
+    """Load job records from a cached JSON fixture for dry-run scoring.
+
+    The fixture is either a top-level list of records or an object with a
+    "jobs" key. Each record maps to a Job; "source" is accepted as an alias
+    for "apply_method". This lets the scoring pipeline be exercised end-to-end
+    without launching Selenium or hitting any job site.
+    """
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    records = raw.get("jobs", []) if isinstance(raw, dict) else raw
+    jobs: list[Job] = []
+    for rec in records:
+        jobs.append(Job(
+            role=rec.get("role", ""),
+            company=rec.get("company", ""),
+            location=rec.get("location", ""),
+            link=rec.get("link", ""),
+            apply_method=rec.get("apply_method") or rec.get("source", "fixture"),
+            description=rec.get("description", ""),
+        ))
+    return jobs
+
+
 def search_and_score_jobs(config: dict, secrets: dict, resume_yaml_text: str):
     """
-    Search LinkedIn, Handshake, and Simplify for recently posted jobs.
-    Each job is scored for fit (1-10) by Groq/Llama. Jobs that pass the threshold
-    also get an ATS analysis: keyword coverage %, matched/missing keywords, and
-    one actionable tip. Results are saved as a Markdown report + JSON archive.
+    Search LinkedIn, Handshake, and Simplify for recently posted jobs, then
+    score them. Scraping and scoring are kept separate so the scoring half can
+    be exercised offline via load_jobs_from_fixtures (see --dry-run).
+    """
+    groq_key = secrets.get("groq_api_key", "")
+    if not groq_key:
+        logger.error(
+            "No 'groq_api_key' found in secrets.yaml. "
+            "Get a free key at console.groq.com (no credit card required)."
+        )
+        return
+
+    logger.info("Launching browsers for job search (LinkedIn, Handshake, Simplify)…")
+
+    # Browsers are closed inside JobSearchManager._run_searcher.
+    manager  = JobSearchManager(config, secrets)
+    all_jobs = manager.search_all()
+    logger.info(f"Total jobs collected: {len(all_jobs)}")
+
+    score_jobs(all_jobs, config, secrets, resume_yaml_text)
+
+
+def score_jobs(all_jobs: list[Job], config: dict, secrets: dict, resume_yaml_text: str):
+    """
+    Score a list of already-collected jobs. Each job is scored for fit (1-10)
+    by Groq/Llama. Jobs that pass the threshold also get an ATS analysis:
+    keyword coverage %, matched/missing keywords, and one actionable tip.
+    Results are saved as a Markdown report + JSON archive.
     """
     groq_key = secrets.get("groq_api_key", "")
     if not groq_key:
@@ -362,14 +413,6 @@ def search_and_score_jobs(config: dict, secrets: dict, resume_yaml_text: str):
 
     output_dir: Path = config["outputFileDirectory"]
     datestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
-
-    logger.info("Launching browsers for job search (LinkedIn, Handshake, Simplify)…")
-
-    # ── 1. Scrape all sites in parallel ───────────────────────────────
-    # Browsers are closed inside JobSearchManager._run_searcher.
-    manager  = JobSearchManager(config, secrets)
-    all_jobs = manager.search_all()
-    logger.info(f"Total jobs collected: {len(all_jobs)}")
 
     all_jobs.sort(key=lambda j: _role_priority(j.role))
 
@@ -383,8 +426,8 @@ def search_and_score_jobs(config: dict, secrets: dict, resume_yaml_text: str):
 
     if not all_jobs:
         logger.warning(
-            "No jobs found. "
-            "Check your positions/locations in work_preferences.yaml."
+            "No jobs to score. For a live run, check your positions/locations in "
+            "work_preferences.yaml; for a dry run, check the fixtures file."
         )
         return
 
@@ -607,7 +650,29 @@ def _write_markdown_report(
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def main():
+def _parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Search, fit-score, and ATS-analyze internship/job listings. "
+            "Use --dry-run to score cached fixtures without live scraping."
+        )
+    )
+    parser.add_argument(
+        "--dry-run",
+        nargs="?",
+        const=str(DEFAULT_FIXTURES),
+        default=None,
+        metavar="FIXTURES",
+        help=(
+            "Score jobs from a cached fixtures JSON file instead of live "
+            f"scraping. Defaults to {DEFAULT_FIXTURES} when no path is given."
+        ),
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv=None):
+    args = _parse_args(argv)
     try:
         data_folder = Path("data_folder")
         secrets_file, config_file, plain_text_resume_file, output_folder = \
@@ -624,7 +689,15 @@ def main():
             resume_yaml_text = f.read()
 
         resume_for_scoring = _compress_resume(resume_yaml_text)
-        search_and_score_jobs(config, secrets, resume_for_scoring)
+
+        if args.dry_run:
+            fixtures_path = Path(args.dry_run)
+            logger.info(f"[Dry-run] Loading cached jobs from {fixtures_path}")
+            jobs = load_jobs_from_fixtures(fixtures_path)
+            logger.info(f"[Dry-run] Loaded {len(jobs)} jobs — scoring without scraping")
+            score_jobs(jobs, config, secrets, resume_for_scoring)
+        else:
+            search_and_score_jobs(config, secrets, resume_for_scoring)
 
     except ConfigError as ce:
         logger.error(f"Configuration error: {ce}")

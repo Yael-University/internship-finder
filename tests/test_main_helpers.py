@@ -15,13 +15,16 @@ from datetime import datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from main import (
+    DEFAULT_FIXTURES,
     _CACHE_TTL_DAYS,
     _cache_get,
     _cache_set,
     _compress_resume,
     _load_score_cache,
+    _parse_args,
     _role_priority,
     _save_score_cache,
+    load_jobs_from_fixtures,
 )
 
 
@@ -196,3 +199,55 @@ class TestCacheLoadSave:
         loaded = _load_score_cache(output_dir)
         assert "https://job/new" in loaded
         assert "https://job/old" not in loaded
+
+
+# ── dry-run fixture loading ─────────────────────────────────────────────────
+
+class TestLoadJobsFromFixtures:
+    def test_loads_list_form(self, tmp_path):
+        f = tmp_path / "jobs.json"
+        f.write_text(json.dumps([
+            {"role": "DE", "company": "Acme", "location": "Remote",
+             "link": "https://x/1", "source": "fixture", "description": "desc"},
+        ]), encoding="utf-8")
+        jobs = load_jobs_from_fixtures(f)
+        assert len(jobs) == 1
+        assert jobs[0].role == "DE"
+        assert jobs[0].apply_method == "fixture"
+        assert jobs[0].description == "desc"
+
+    def test_loads_object_with_jobs_key(self, tmp_path):
+        f = tmp_path / "jobs.json"
+        f.write_text(json.dumps({"jobs": [
+            {"role": "DS", "company": "N", "apply_method": "handshake"},
+        ]}), encoding="utf-8")
+        jobs = load_jobs_from_fixtures(f)
+        assert len(jobs) == 1
+        assert jobs[0].apply_method == "handshake"
+        # Missing fields fall back to empty strings.
+        assert jobs[0].location == ""
+
+    def test_source_aliases_apply_method(self, tmp_path):
+        f = tmp_path / "jobs.json"
+        f.write_text(json.dumps([{"role": "r", "company": "c", "source": "simplify"}]),
+                     encoding="utf-8")
+        assert load_jobs_from_fixtures(f)[0].apply_method == "simplify"
+
+    def test_bundled_sample_fixture_is_valid(self):
+        # The committed sample fixture should always load cleanly.
+        jobs = load_jobs_from_fixtures(DEFAULT_FIXTURES)
+        assert len(jobs) >= 1
+        assert all(j.role and j.description for j in jobs)
+
+
+# ── CLI argument parsing ────────────────────────────────────────────────────
+
+class TestParseArgs:
+    def test_default_is_live_run(self):
+        assert _parse_args([]).dry_run is None
+
+    def test_dry_run_flag_uses_default_fixture(self):
+        assert _parse_args(["--dry-run"]).dry_run == str(DEFAULT_FIXTURES)
+
+    def test_dry_run_accepts_explicit_path(self):
+        assert _parse_args(["--dry-run", "/tmp/jobs.json"]).dry_run == "/tmp/jobs.json"
