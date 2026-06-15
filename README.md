@@ -70,6 +70,11 @@ python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+For a reproducible install matching the deployed container, use the pinned lock
+file instead: `pip install -r requirements.lock`. The lock is generated from
+`requirements.txt` with `pip-compile --strip-extras --output-file=requirements.lock requirements.txt`
+(from `pip-tools`); regenerate it whenever you change a dependency.
+
 The ATS ML models (`jobbert` + `all-MiniLM-L6-v2`) download automatically on first run (~500 MB total). If they fail to load, the scorer falls back to static keyword matching with no interruption.
 
 ### Configure

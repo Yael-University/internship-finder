@@ -4,8 +4,11 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends gcc && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install from the fully-pinned lock file for reproducible builds.
+# requirements.txt stays the human-edited source; regenerate the lock with:
+#   pip-compile --strip-extras --output-file=requirements.lock requirements.txt
+COPY requirements.lock .
+RUN pip install --no-cache-dir -r requirements.lock
 
 # Pre-download sentence-transformers model at build time so the container
 # starts instantly. jobbert (~440 MB) is excluded — ATSScorer falls back
